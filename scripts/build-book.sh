@@ -24,14 +24,19 @@ for tool in pandoc typst; do
     echo "error: $tool is not on PATH." >&2; exit 127; }
 done
 
-# Chapters in reading order. The NN- prefixes sort correctly, so the shell's
-# glob expansion is already in reading order.
+# Convert each chapter separately, in reading order (the NN- prefixes sort
+# correctly), passing its file name so the filter can label the chapter for
+# cross-chapter links. The per-file bodies are concatenated into one.
 echo "Converting Markdown chapters to a Typst body ..."
-pandoc "$REPO_ROOT"/book/*.md \
-  --from gfm+tex_math_dollars \
-  --to typst \
-  --lua-filter "$PIPE/github-alerts.lua" \
-  --output "$OUT/body.typ"
+: > "$OUT/body.typ"
+for chapter in "$REPO_ROOT"/book/*.md; do
+  CHAPTER_NAME="$(basename "$chapter" .md)" pandoc "$chapter" \
+    --from gfm+tex_math_dollars \
+    --to typst \
+    --lua-filter "$PIPE/book-filter.lua" \
+    >> "$OUT/body.typ"
+  printf '\n\n' >> "$OUT/body.typ"
+done
 
 # Prepend the head (which imports and applies the Chapter 22 book template)
 # to the converted body, making one document the template styles end to end.

@@ -20,16 +20,21 @@ for tool in pandoc typst; do
     echo "error: $tool is not on PATH." >&2; exit 127; }
 done
 
-# 1. Convert every chapter's Markdown to a single Typst body. The Lua filter
-#    turns GitHub alerts into #admonition() calls, passes Typst-syntax math
-#    through verbatim, drops the <!-- SOLUTIONS --> comments, and leaves the
-#    Preface and Appendices unnumbered.
+# 1. Convert each chapter's Markdown to Typst, in order, passing the file name
+#    so the filter can label the chapter (for cross-chapter links). The Lua
+#    filter turns GitHub alerts into the template's #note/#warning calls, passes
+#    Typst-syntax math through verbatim, rewrites in-repo links, drops the
+#    <!-- SOLUTIONS --> comments, and leaves front/back matter unnumbered.
 echo "Converting Markdown -> Typst ..."
-pandoc "$REPO_ROOT"/book/*.md \
-  --from gfm+tex_math_dollars \
-  --to typst \
-  --lua-filter "$HERE/github-alerts.lua" \
-  --output "$OUT/body.typ"
+: > "$OUT/body.typ"
+for chapter in "$REPO_ROOT"/book/*.md; do
+  CHAPTER_NAME="$(basename "$chapter" .md)" pandoc "$chapter" \
+    --from gfm+tex_math_dollars \
+    --to typst \
+    --lua-filter "$HERE/book-filter.lua" \
+    >> "$OUT/body.typ"
+  printf '\n\n' >> "$OUT/body.typ"
+done
 
 # 2. Prepend head.typ, which imports and applies the Chapter 22 book template
 #    (examples/115), to the converted body, making one document the template

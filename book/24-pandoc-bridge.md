@@ -70,7 +70,7 @@ In shell, stripped to its bones:
 
 ```sh
 pandoc book/*.md --from gfm --to typst \
-  --lua-filter github-alerts.lua \
+  --lua-filter book-filter.lua \
   --output body.typ
 
 cat head.typ body.typ > learning-typst.typ
@@ -102,7 +102,7 @@ things it won't do on its own. Rather than post-process the output with fragile
 text substitution, Pandoc lets you insert a **filter**: a small program that
 runs on the parsed document *between* reading and writing, so you transform the
 document model itself. Filters can be written in Lua, a tiny language Pandoc
-embeds, and ours — `github-alerts.lua` — is a short program doing a handful of
+embeds, and ours — `book-filter.lua` — is a short program doing a handful of
 small jobs.
 
 ### Turning alerts into admonitions
@@ -200,8 +200,47 @@ end
 ```
 
 With the front and back matter set aside, the chapters in between number 1
-through N exactly as they should. It's a three-line rule that turns a flat
-sequence of headings into the structure of a real book.
+through N exactly as they should. It's a small rule that turns a flat sequence
+of headings into the structure of a real book.
+
+### Making the links work
+
+A book is full of links — "see [Appendix A]", "the runnable version is in
+`examples/003-first-document/`". In the Markdown these are ordinary relative
+links: `25-appendix-a-solutions.md`, `../examples/003-first-document/`. Left
+alone, Pandoc turns each into a Typst link to that literal path — and in a
+single PDF those paths lead nowhere, rendering as oddly styled text that clicks
+into the void. The filter rewrites both kinds into something that works:
+
+```lua
+function Link(el)
+  local t = el.target
+  if t:match("^https?://") then return nil end       -- external: leave it
+  local repo = t:match("^%.%./(examples.*)$")         -- an example folder…
+  if repo then
+    el.target = "https://github.com/…/tree/main/" .. repo  -- …→ GitHub
+    return el
+  end
+  local md = t:match("^([%w%-]+)%.md")                -- another chapter…
+  if md then                                          -- …→ an internal jump
+    return { pandoc.RawInline("typst", "#link(<" .. md .. ">)["),
+             table.unpack(el.content),
+             pandoc.RawInline("typst", "]") }
+  end
+end
+```
+
+A link into `examples/` becomes a real GitHub URL, so a reader of the PDF can
+click straight through to the example in the repository. A link to another
+chapter becomes `#link(<25-appendix-a-solutions>)[Appendix A]` — an internal
+jump. For that jump to land somewhere, each chapter heading needs a matching
+label, so the same heading rule from a moment ago also tags every chapter with
+one: `#heading(level: 1)[Appendix A] <25-appendix-a-solutions>`. The label is
+the file's own name — which is exactly what the link points at. That is also why
+the build converts the chapters *one file at a time*, passing each file's name
+to the filter: it's the one thing a heading can't otherwise know about itself.
+Now "see Appendix A" is a live cross-reference inside the PDF, the same kind you
+built by hand in Chapter 11.
 
 ### Dropping the author's notes
 
@@ -293,11 +332,9 @@ built. The snake, contentedly, eats its tail.
 
 ## What's simplified, honestly
 
-A pipeline this short makes trade-offs, and it's only fair to name them. Links
-between chapters (`[Appendix A](25-…md)`) render as text rather than live
-internal jumps, because resolving them into one document would take another
-filter. Markdown tables come through wrapped in figures, so they pick up "Table
-N" numbers you may not want. The index the template can generate stays empty,
+A pipeline this short makes trade-offs, and it's only fair to name them.
+Markdown tables come through wrapped in figures, so they pick up "Table N"
+numbers you may not want. The index the template can generate stays empty,
 because the Markdown carries no `#idx` markers for it to collect. Fine
 typography you'd hand-tune in a real Typst document — exact page breaks, widow
 control around one figure — isn't something a batch conversion can decide for
@@ -321,7 +358,8 @@ You can now turn a body of Markdown into a typeset Typst PDF:
   `$…$` templating from colliding.
 - **A Lua filter** shapes the conversion: GitHub alerts become the template's
   `#note` / `#warning` boxes, Typst-syntax math is passed through untouched,
-  thematic breaks become rules, the Preface and appendices (and their
+  thematic breaks become rules, cross-chapter links become internal jumps and
+  example links become GitHub URLs, the Preface and appendices (and their
   subsections) are left unnumbered, and author-only HTML comments are dropped.
 - **The head reuses your template** — it imports and applies the Chapter 22 book
   template (passing an A4 page), so the Markdown-sourced book gets the exact

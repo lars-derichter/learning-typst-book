@@ -19,12 +19,16 @@ same pipeline from the repo root.)
 - **`build.sh`** — the three-step pipeline: Pandoc converts every chapter to a
   Typst body, the body is concatenated onto the preamble, and Typst compiles the
   result.
-- **`github-alerts.lua`** — a Pandoc filter that (1) rewrites GitHub alert
+- **`book-filter.lua`** — a Pandoc filter that (1) rewrites GitHub alert
   blockquotes (`> [!NOTE]`) into the template's `#note[…]` / `#tip[…]` / …
   admonition calls, (2) passes the book's Typst-syntax math through verbatim
   instead of treating it as LaTeX, (3) drops the `<!-- SOLUTIONS -->` comments,
-  (4) turns Markdown thematic breaks into rules, and (5) leaves the Preface and
-  Appendices (and their subsections) unnumbered so the chapters number 1–N.
+  (4) turns Markdown thematic breaks into rules, (5) rewrites in-repo links
+  (cross-chapter `.md` links into internal PDF jumps, `examples/` links into
+  GitHub URLs), and (6) leaves the Preface and Appendices (and their
+  subsections) unnumbered so the chapters number 1–N. The build runs it once
+  per chapter file (passing `CHAPTER_NAME`) so each chapter can be labelled for
+  those internal jumps.
 - **`head.typ`** — imports and applies the **Chapter 22 book template**
   (`../115-oreilly-book-template/`), passing an A4 page; the converted body is
   concatenated after it, so the same template that Chapter 22 builds by hand
