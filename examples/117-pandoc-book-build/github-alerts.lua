@@ -53,6 +53,15 @@ function RawBlock(el)
   return nil
 end
 
+-- Pandoc renders a Markdown thematic break (`---`) as a bare `#horizontalrule`,
+-- which Typst has no such function for. Draw it as a faint centered rule.
+function HorizontalRule()
+  return pandoc.RawBlock(
+    "typst",
+    "#v(2pt) #align(center, line(length: 30%, stroke: 0.5pt + luma(180))) #v(2pt)"
+  )
+end
+
 -- The book writes its inline and display math in *Typst* syntax inside `$...$`
 -- (e.g. `$sum_(i=1)^n$`), not LaTeX. Pandoc, told to read dollar-math, hands us
 -- the raw text; we wrap it straight back in Typst math delimiters so it is
