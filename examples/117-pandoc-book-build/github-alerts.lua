@@ -77,17 +77,30 @@ end
 
 -- Front and back matter shouldn't eat chapter numbers. The Preface and each
 -- Appendix are top-level headings, but the chapters between them should number
--- 1..N cleanly, so we emit those two as *unnumbered* headings (which Typst does
--- not count) while leaving ordinary chapter headings alone.
+-- 1..N cleanly, so we emit the front/back-matter headings as *unnumbered*
+-- (which Typst does not count) while leaving ordinary chapter headings alone.
+-- The flag also unnumbers the *sub*sections inside the Preface and Appendices,
+-- which would otherwise keep counting from the last numbered chapter (e.g.
+-- "24.24"), since the unnumbered H1 above them never advanced the counter.
+local numbered_body = true
+
 function Header(el)
+  local text = pandoc.utils.stringify(el)
   if el.level == 1 then
-    local text = pandoc.utils.stringify(el)
     if text == "Preface" or text:match("^Appendix") then
+      numbered_body = false
       return pandoc.RawBlock(
-        "typst",
-        "#heading(level: 1, numbering: none)[" .. text .. "]"
+        "typst", "#heading(level: 1, numbering: none)[" .. text .. "]"
       )
+    else
+      numbered_body = true
+      return nil
     end
+  elseif not numbered_body then
+    return pandoc.RawBlock(
+      "typst",
+      "#heading(level: " .. el.level .. ", numbering: none)[" .. text .. "]"
+    )
   end
   return nil
 end
