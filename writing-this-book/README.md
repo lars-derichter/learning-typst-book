@@ -38,6 +38,9 @@ process is what this folder documents.
   example really compiles" a promise instead of a hope.
 - [06 · Reflections](06-reflections.md) — what worked, what didn't, and what
   this suggests about doing this kind of thing well.
+- [07 · After the first finish](07-after-the-first-finish.md) — the running
+  record of changes made *after* the book was declared done, and why "finished"
+  and "improving" turned out to be different events.
 
 ## The one-paragraph version
 
