@@ -6,10 +6,12 @@
 // the Markdown chapters don't carry: an "About the authors" note, a colophon
 // with the licence, and a back-cover blurb.
 //
-// They are drawn as isolated `#page`s of raw text (like the template's own
-// title page), not headings — so they get no chapter opener, no running head,
-// and no outline entry. Paths are absolute from the repo root because the build
-// compiles the concatenated file with `--root` at the repository.
+// "About the authors" and "Colophon" are real *unnumbered* headings — like the
+// Preface and the appendices — so the template styles them as front/back-matter
+// openers and, crucially, lists them in the table of contents. The back cover
+// is a bare `#page` with no heading, so it stays out of the outline. Paths are
+// absolute from the repo root because the build compiles with `--root` at the
+// repository.
 
 #import "/examples/115-oreilly-book-template/template/theme.typ": *
 
@@ -19,101 +21,90 @@
   height: 11mm,
 )
 
-// A section heading in the back-matter style: the title page's look, not a real
-// `heading` (which would trip the chapter-opener show rule).
-#let _matter-title(title) = block(above: 0pt, below: 1.1em)[
-  #text(font: font-head, size: 22pt, weight: "bold", fill: ink)[#title]
-  #v(3pt)
-  #line(length: 100%, stroke: 0.6pt + accent)
-]
-
-// A name label above each bio.
+// A name label above each bio / block.
 #let _byline(name) = text(font: font-head, size: 12pt, weight: "bold", fill: accent)[#name]
 
+// The back matter reads as flowing prose under its openers, not indented like
+// running body paragraphs.
+#set par(first-line-indent: 0pt, justify: true, leading: 0.62em)
+
 // === About the authors =====================================================
-#page(header: none, footer: none)[
-  #set par(first-line-indent: 0pt, justify: true, leading: 0.62em)
-  #v(0.6fr)
-  #_matter-title[About the authors]
+// An unnumbered level-1 heading: the template gives it a front-matter opener
+// (title + rule, no "CHAPTER n") and an outline entry.
+#heading(level: 1, numbering: none)[About the authors]
 
-  #_byline[Lars De Richter]
-  #parbreak()
-  Lars De Richter is a lecturer at Thomas More Hogeschool in Flanders and, at the
-  time of writing, a master's student in educational sciences — a formal way of
-  saying he is professionally curious and has the transcripts to prove it. He
-  learns things by building them, a habit that explains how someone who had known
-  Typst for all of a few weeks came to commission, direct, and quality-control an
-  entire book about it. He wrote none of these chapters and is answerable for
-  every one of them: the brief, the standard, the pointed feedback, and the
-  refusal to ship anything that didn't actually compile. He works in Flemish
-  Dutch, thinks in diagrams, and holds that the fastest way to understand a tool
-  is to make it do something real. This book was that something.
+#_byline[Lars De Richter]
+#parbreak()
+Lars De Richter is a lecturer at Thomas More Hogeschool in Flanders and, at the
+time of writing, a master's student in educational sciences — a formal way of
+saying he is professionally curious and has the transcripts to prove it. He
+learns things by building them, a habit that explains how someone who had known
+Typst for all of a few weeks came to commission, direct, and quality-control an
+entire book about it. He wrote none of these chapters and is answerable for
+every one of them: the brief, the standard, the pointed feedback, and the
+refusal to ship anything that didn't actually compile. He works in Flemish
+Dutch, thinks in diagrams, and holds that the fastest way to understand a tool
+is to make it do something real. This book was that something.
 
-  #v(1.1em)
-  #_byline[Claude (Opus 4.8)]
-  #parbreak()
-  Claude is a large language model made by Anthropic, and the closest thing this
-  book has to a ghostwriter who works for electricity. It produced most of the
-  words you just read, none of which it can remember writing, and it has never
-  once seen a page it typeset — it cannot see, and it has firm opinions about
-  kerning regardless. Its relationship with the truth is enthusiastic but wants
-  supervision: left to itself it will write ninety-odd thousand confident words
-  and a handful of links that lead nowhere, which is precisely what happened until
-  a human noticed. What it is genuinely good at is turning a clear standard into a
-  great deal of careful, consistent prose very quickly — and then re-compiling
-  every example to check its own homework, because the one editor it could not
-  talk its way past was the Typst compiler, which either builds the file or does
-  not. Every example in this book builds. That part, at least, it can promise.
-  #v(0.9fr)
-]
+#v(1.1em)
+#_byline[Claude (Opus 4.8)]
+#parbreak()
+Claude is a large language model made by Anthropic, and the closest thing this
+book has to a ghostwriter who works for electricity. It produced most of the
+words you just read, none of which it can remember writing, and it has never
+once seen a page it typeset — it cannot see, and it has firm opinions about
+kerning regardless. Its relationship with the truth is enthusiastic but wants
+supervision: left to itself it will write ninety-odd thousand confident words
+and a handful of links that lead nowhere, which is precisely what happened until
+a human noticed. What it is genuinely good at is turning a clear standard into a
+great deal of careful, consistent prose very quickly — and then re-compiling
+every example to check its own homework, because the one editor it could not
+talk its way past was the Typst compiler, which either builds the file or does
+not. Every example in this book builds. That part, at least, it can promise.
 
 // === Colophon ==============================================================
-#page(header: none, footer: none)[
-  #set par(first-line-indent: 0pt, justify: true, leading: 0.62em)
-  #v(0.6fr)
-  #_matter-title[Colophon]
+#heading(level: 1, numbering: none)[Colophon]
 
-  This book was written in Markdown, converted to Typst with Pandoc, and typeset
-  by Typst 0.15.0 — using the very book template it builds by hand in Chapter 22.
-  There was no separate design step: the pipeline that produced this PDF is the
-  one the book teaches, run on the book's own source. Every code example was
-  compiled against a real Typst binary before it earned its place; nothing here
-  is a snippet that merely looks as though it would work.
+This book was written in Markdown, converted to Typst with Pandoc, and typeset
+by Typst 0.15.0 — using the very book template it builds by hand in Chapter 22.
+There was no separate design step: the pipeline that produced this PDF is the
+one the book teaches, run on the book's own source. Every code example was
+compiled against a real Typst binary before it earned its place; nothing here
+is a snippet that merely looks as though it would work.
 
-  #parbreak()
-  It is set in Libertinus Serif, with New Computer Modern for titles and headings
-  and DejaVu Sans Mono for code — three faces that ship with Typst, so the book
-  renders the same on any machine. The whole process, from the first prompt to
-  the managing-editor-and-sub-agents workflow that ran it, is documented openly
-  at #link("https://github.com/lars-derichter/learning-typst-book")[github.com/lars-derichter/learning-typst-book].
+#parbreak()
+It is set in Libertinus Serif, with New Computer Modern for titles and headings
+and DejaVu Sans Mono for code — three faces that ship with Typst, so the book
+renders the same on any machine. The whole process, from the first prompt to
+the managing-editor-and-sub-agents workflow that ran it, is documented openly
+at #link("https://github.com/lars-derichter/learning-typst-book")[github.com/lars-derichter/learning-typst-book].
 
-  #v(1.4em)
-  #line(length: 100%, stroke: 0.5pt + hairline)
-  #v(1.1em)
+#v(1.4em)
+#line(length: 100%, stroke: 0.5pt + hairline)
+#v(1.1em)
 
-  #_byline[Licence]
-  #parbreak()
-  #grid(
-    columns: (auto, 1fr),
-    column-gutter: 14pt,
-    align: (left + horizon, left + horizon),
-    box(stack(dir: ltr, spacing: 7pt,
-      _cc-badge("cc"), _cc-badge("by"), _cc-badge("nc"), _cc-badge("sa"),
-    )),
-    [
-      #text(font: font-body, size: size-body)[
-        _Learning Typst_ — its text and its example code — is released under a
-        Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
-        licence. Share it, remix it, teach from it; just credit the source, don't
-        sell it, and pass on the same freedoms. Full terms:
-        #link("https://creativecommons.org/licenses/by-nc-sa/4.0/")[creativecommons.org/licenses/by-nc-sa/4.0].
-      ]
-    ],
-  )
-  #v(1.4fr)
-]
+#_byline[Licence]
+#parbreak()
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 14pt,
+  align: (left + horizon, left + horizon),
+  box(stack(dir: ltr, spacing: 7pt,
+    _cc-badge("cc"), _cc-badge("by"), _cc-badge("nc"), _cc-badge("sa"),
+  )),
+  [
+    #text(font: font-body, size: size-body)[
+      _Learning Typst_ — its text and its example code — is released under a
+      Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+      licence. Share it, remix it, teach from it; just credit the source, don't
+      sell it, and pass on the same freedoms. Full terms:
+      #link("https://creativecommons.org/licenses/by-nc-sa/4.0/")[creativecommons.org/licenses/by-nc-sa/4.0].
+    ]
+  ],
+)
 
 // === Back cover ============================================================
+// A bare page with no heading, so it never enters the outline.
 #page(header: none, footer: none)[
   #set par(first-line-indent: 0pt, justify: false, leading: 0.7em)
   #set align(center)
