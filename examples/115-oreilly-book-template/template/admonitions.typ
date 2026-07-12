@@ -16,6 +16,7 @@
   width: 100%,
   above: 1em,
   below: 1em,
+  breakable: false,  // keep the box whole; never strand its label at a page foot
 )[
   #text(
     font: font-head,

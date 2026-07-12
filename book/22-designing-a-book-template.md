@@ -356,6 +356,7 @@ from Chapter 14 — `body` first, options named with defaults:
   inset: (x: 10pt, y: 8pt),
   radius: (right: 3pt),
   width: 100%,
+  breakable: false,
 )[
   #text(font: font-head, fill: color, weight: "bold", size: size-small,
         tracking: 0.6pt)[#upper(kind)]
@@ -371,6 +372,14 @@ uppercase label, and then the body. Because `body` is the last parameter, the
 trailing-content sugar works and you call it `#note[...]` with the text in
 brackets, exactly like a built-in — that is the whole reason Chapter 14 told you
 to put `body` last.
+
+The one non-obvious argument is `breakable: false`. A `block` may, by default,
+split across a page boundary, and for a paragraph that is exactly what you want.
+For an admonition it is a small disaster: the box tears in two, its coloured
+label stranded alone at the foot of one page and its text marooned at the top of
+the next. `breakable: false` forbids the split — if the whole box will not fit
+in the space left on the page, Typst moves it, intact, to the next one. A callout
+is a single visual object; this keeps it that way.
 
 The five variants are not five more functions. They are one function with its
 arguments pre-filled, using `.with` from Chapter 14:
