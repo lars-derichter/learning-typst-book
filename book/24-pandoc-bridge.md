@@ -62,8 +62,8 @@ The whole build lives in `examples/117-pandoc-book-build/` and in the
 repository's `scripts/build-book.sh`. It does exactly three things:
 
 1. **Convert** every chapter's Markdown into one big Typst *body* with Pandoc.
-2. **Assemble** the book by putting a Typst *preamble* — the design — in front
-   of that body.
+2. **Assemble** the book by putting a short *head* — one that imports and
+   applies the Chapter 22 book template — in front of that body.
 3. **Compile** the combined file to a PDF with Typst.
 
 In shell, stripped to its bones:
@@ -73,27 +73,27 @@ pandoc book/*.md --from gfm --to typst \
   --lua-filter github-alerts.lua \
   --output body.typ
 
-cat book-preamble.typ body.typ > learning-typst.typ
+cat head.typ body.typ > learning-typst.typ
 
 typst compile learning-typst.typ learning-typst.pdf
 ```
 
 The `book/*.md` glob expands in order, because the chapters are named `00-`,
 `01-`, `02-`, and so on — the numbering scheme earning its keep one last time.
-Pandoc concatenates them into a single body. We prepend the preamble with a
-plain `cat`, and Typst compiles the result.
+Pandoc concatenates them into a single body. We prepend the head with a plain
+`cat`, and Typst compiles the result.
 
 > [!NOTE]
 > You might expect to use Pandoc's own `--template` feature to wrap the body,
 > and you can — but there's a trap. A Pandoc template treats every `$…$` as a
 > variable to substitute, and Typst uses `$…$` for math. The two notations
-> collide badly. Concatenating a plain Typst preamble with `cat` sidesteps the
-> whole problem: the preamble is pure Typst, Pandoc never sees it, and nothing
-> gets confused. Sometimes the blunt tool is the right one.
+> collide badly. Concatenating a plain Typst head with `cat` sidesteps the whole
+> problem: the head is pure Typst, Pandoc never sees it, and nothing gets
+> confused. Sometimes the blunt tool is the right one.
 
 Two of those steps are trivial (`cat` and `typst compile`). The craft is in the
-other two: the Lua filter that shapes Pandoc's conversion, and the preamble that
-supplies the design. Take them in turn.
+other two: the Lua filter that shapes Pandoc's conversion, and the head that
+applies the design. Take them in turn.
 
 ## Teaching Pandoc new tricks with a Lua filter
 
@@ -102,7 +102,8 @@ things it won't do on its own. Rather than post-process the output with fragile
 text substitution, Pandoc lets you insert a **filter**: a small program that
 runs on the parsed document *between* reading and writing, so you transform the
 document model itself. Filters can be written in Lua, a tiny language Pandoc
-embeds, and ours — `github-alerts.lua` — is about sixty lines doing four jobs.
+embeds, and ours — `github-alerts.lua` — is a short program doing a handful of
+small jobs.
 
 ### Turning alerts into admonitions
 
@@ -120,7 +121,8 @@ flattens that Div into a plain `#block` and throws the flavour away. A note and
 a warning come out looking identical, which defeats the purpose.
 
 The filter catches the Div before the writer sees it and rewrites it into a call
-to a Typst function we control:
+to the matching admonition function — `#note`, `#tip`, `#warning`, and the rest
+— that the Chapter 22 template already exports:
 
 ```lua
 local kinds = { note=true, tip=true, important=true,
@@ -129,8 +131,7 @@ local kinds = { note=true, tip=true, important=true,
 function Div(el)
   for _, class in ipairs(el.classes) do
     if kinds[class] then
-      local out = { pandoc.RawBlock("typst",
-                      '#admonition("' .. class .. '")[') }
+      local out = { pandoc.RawBlock("typst", "#" .. class .. "[") }
       for _, blk in ipairs(el.content) do
         if not (blk.t == "Div" and blk.classes:includes("title")) then
           table.insert(out, blk)
@@ -145,14 +146,14 @@ end
 
 Read it as a recipe. When Pandoc hands the filter a `Div`, we check whether it's
 one of our alert kinds. If so, we build a replacement: a raw chunk of Typst,
-`#admonition("note")[`, then the alert's own content (minus the little inner
-`title` Div that just held the word "Note"), then a closing `]`. The content
-blocks in the middle are still ordinary Pandoc blocks, so the Typst writer
-converts *them* normally — we've only wrapped them in a function call. The
-result in the body is `#admonition("note")[ …converted content… ]`, and the
-preamble defines `admonition` to draw the coloured box. The alert's flavour
-survives, because we transformed the document at the structural level instead of
-patching its text.
+`#note[`, then the alert's own content (minus the little inner `title` Div that
+just held the word "Note"), then a closing `]`. The content blocks in the middle
+are still ordinary Pandoc blocks, so the Typst writer converts *them* normally —
+we've only wrapped them in a function call. The result in the body is `#note[
+…converted content… ]` — a call to the very `note` function you built in Chapter
+22 (a warning becomes `#warning[…]`, and so on). The template draws the coloured
+box. The alert's flavour survives, because we transformed the document at the
+structural level instead of patching its text.
 
 ### Passing math through untouched
 
@@ -214,31 +215,52 @@ function RawBlock(el)
 end
 ```
 
-Four small functions, and Pandoc's literal conversion becomes a book-aware one.
+A few small functions, and Pandoc's literal conversion becomes a book-aware one.
 
-## The preamble: a template, one more time
+## The head: the Chapter 22 template, reused
 
 The body that Pandoc produces is just content — headings, paragraphs, the
-`#admonition` calls the filter emitted. It has no page size, no fonts, no title
-page, and no definition of `admonition`. All of that lives in
-`book-preamble.typ`, and it is nothing you haven't seen. It is a template, in
-the exact sense of Chapter 19 and the book template of Chapter 22: a stack of
-`set` rules for the page and text, `show` rules that give chapters their opening
-pages and style the code blocks, the `admonition` function built with the
-content-argument pattern from Chapter 14, a title page, and a generated
-`#outline` for the table of contents.
+`#note` and `#warning` calls the filter emitted. It has no page, no fonts, no
+title page, and no definition of `note`. Supplying all that is a template's job,
+and here is the payoff of the whole book: we do not write a new one. The
+`head.typ` we `cat` in front *imports the book template you built in Chapter 22*
+and applies it.
 
-The one structural trick is that the preamble ends not with a `body` parameter
-but with nothing at all — because the body is *concatenated on* after it by the
-`cat` in step two. Everything the preamble sets up is therefore in force for the
-content that follows it, the same "rules first, content after" logic that makes
-every template work.
+```typ
+// head.typ  (import paths shortened for print)
+#import "…/115-oreilly-book-template/template/book.typ": book
+#import "…/115-oreilly-book-template/template/admonitions.typ": note, tip, ...
 
-That reuse is the point worth savouring. The Markdown-to-PDF pipeline didn't
-need a new styling system; it plugs the converted content into the very
-machinery this book spent Part V teaching. The book's design is a Typst
-template, whether the content arrives hand-written in Typst (Chapter 23) or
-converted from Markdown here. Same engine, two front doors.
+#show: book.with(
+  title: "Learning Typst",
+  subtitle: "A hands-on guide to the Typst typesetting system",
+  author: "Written with AI, under human direction",
+  width: 21cm, height: 29.7cm, margin: (x: 2cm, top: 2.2cm, bottom: 2cm),
+)
+```
+
+That is the entire head. The imports pull in the template's `book` function and
+its admonition variants — the very `note`, `tip`, and `warning` the Lua filter's
+output calls. The `#show: book.with(...)` applies the template (the
+document-wide show rule from Chapter 10, fed a configured function from Chapter
+14), and because the Pandoc body is concatenated on *after* this line, that body
+becomes `book()`'s `body` argument. The template lays down its title page and
+contents, then styles every chapter that follows with the chapter openers,
+running heads, themed code, and admonition boxes it was built to produce.
+
+Look at the `width`/`height`/`margin` arguments, because they carry a small
+lesson. Chapter 22's `book()` took a title and an author; it now also takes a
+page size, so the *one* template can dress both the pocket-sized sampler of
+Chapter 22 and this full book — which, with its wide code listings, wants an A4.
+Making the page a parameter cost a single line in the template and turned a demo
+into something genuinely reusable. A template earns the name the day a second,
+different document asks it for a favour.
+
+That reuse is the whole point. The Markdown-to-PDF pipeline needed no new
+styling system: it feeds the converted content into the very template this book
+spent Chapter 22 building by hand. The design is one Typst template, whether the
+content arrives written in Typst (Chapter 23) or converted from Markdown here.
+Same template, two front doors.
 
 ## Running it
 
@@ -249,12 +271,11 @@ repository root:
 scripts/build-book.sh
 ```
 
-It converts every chapter, assembles them under the preamble, compiles the
-result, and writes `build/learning-typst.pdf` — a few hundred pages, with a
-title page, a linked table of contents, numbered chapters, styled admonitions,
-themed code, and typeset math, all from a folder of Markdown files. The preview
-beside this example (`examples/117-pandoc-book-build/out.png`) is its title
-page.
+It converts every chapter, assembles them under the template, compiles the
+result, and writes `build/learning-typst.pdf` — the whole book, with a title
+page, a linked table of contents, numbered chapters, styled admonitions, themed
+code, and typeset math, all from a folder of Markdown files. The preview beside
+this example (`examples/117-pandoc-book-build/out.png`) is its title page.
 
 That is the sentence this whole book has been walking toward: **the book
 typesets itself.** The document you're holding is the output of running that
@@ -276,11 +297,13 @@ A pipeline this short makes trade-offs, and it's only fair to name them. Links
 between chapters (`[Appendix A](25-…md)`) render as text rather than live
 internal jumps, because resolving them into one document would take another
 filter. Markdown tables come through wrapped in figures, so they pick up "Table
-N" numbers you may not want. Fine typography that you'd hand-tune in a real
-Typst document — exact page breaks, widow control around a specific figure —
-isn't something a batch conversion can decide for you. None of these are hard to
-improve; each is another small filter or a preamble tweak, and adding one is a
-good exercise. The pipeline is a foundation, not a ceiling.
+N" numbers you may not want. The index the template can generate stays empty,
+because the Markdown carries no `#idx` markers for it to collect. Fine
+typography you'd hand-tune in a real Typst document — exact page breaks, widow
+control around one figure — isn't something a batch conversion can decide for
+you. None of these are hard to improve; each is another small filter or a
+template tweak, and adding one is a good exercise. The pipeline is a foundation,
+not a ceiling.
 
 What it proves is the important thing: Markdown and Typst are not rivals.
 Markdown is a superb way to *write*, Typst a superb way to *typeset*, and Pandoc
@@ -293,15 +316,17 @@ You can now turn a body of Markdown into a typeset Typst PDF:
 
 - **Pandoc** converts Markdown to Typst with `pandoc --from gfm --to typst`,
   handling headings, emphasis, lists, code, tables, and links out of the box.
-- **The three-step pipeline** — convert each chapter to a body, `cat` a Typst
-  preamble in front, compile — keeps Typst code and Pandoc's `$…$` templating
-  from colliding.
-- **A Lua filter** shapes the conversion: GitHub alerts become `#admonition`
-  boxes, Typst-syntax math is passed through untouched, the Preface and
-  appendices are left unnumbered, and author-only HTML comments are dropped.
-- **The preamble is a template** — the same Chapter 19/22 machinery — supplying
-  the page design, the `admonition` function, a title page, and a table of
-  contents.
+- **The three-step pipeline** — convert each chapter to a body, `cat` a head
+  that applies the template in front, compile — keeps Typst code and Pandoc's
+  `$…$` templating from colliding.
+- **A Lua filter** shapes the conversion: GitHub alerts become the template's
+  `#note` / `#warning` boxes, Typst-syntax math is passed through untouched,
+  thematic breaks become rules, the Preface and appendices (and their
+  subsections) are left unnumbered, and author-only HTML comments are dropped.
+- **The head reuses your template** — it imports and applies the Chapter 22 book
+  template (passing an A4 page), so the Markdown-sourced book gets the exact
+  design — title page, contents, chapter openers, running heads, code theme,
+  admonitions — that you built by hand.
 - **`scripts/build-book.sh`** runs the lot and typesets this entire book from
   its Markdown source.
 

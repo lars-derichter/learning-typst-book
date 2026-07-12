@@ -61,12 +61,22 @@
 }
 
 // --- The template ----------------------------------------------------------
-#let book(title: none, subtitle: none, author: none, body) = {
-  // Page geometry. A small page keeps the multipage preview legible.
+#let book(
+  title: none,
+  subtitle: none,
+  author: none,
+  // Page geometry is a parameter so the same template serves both this small
+  // sampler and a full-size book. The defaults keep the multipage preview
+  // legible; a real book (see the Pandoc pipeline in Chapter 24) passes an A4.
+  width: 13cm,
+  height: 19cm,
+  margin: (x: 1.8cm, top: 2cm, bottom: 1.8cm),
+  body,
+) = {
   set page(
-    width: 13cm,
-    height: 19cm,
-    margin: (x: 1.8cm, top: 2cm, bottom: 1.8cm),
+    width: width,
+    height: height,
+    margin: margin,
     header: none,   // front matter is bare; the body sets these below
     footer: none,
   )
@@ -89,10 +99,14 @@
     pagebreak(weak: true)
     v(1.4cm)
     block(spacing: 0pt)[
-      #text(font: font-head, fill: muted, weight: "bold", size: 10pt, tracking: 2pt)[
-        #upper[Chapter] #context counter(heading).display("1")
+      // The "CHAPTER n" kicker only for numbered chapters. Front and back matter
+      // (a Preface, an Appendix) are unnumbered headings, and just get the title.
+      #if it.numbering != none [
+        #text(font: font-head, fill: muted, weight: "bold", size: 10pt, tracking: 2pt)[
+          #upper[Chapter] #context counter(heading).display("1")
+        ]
+        #v(0.35em)
       ]
-      #v(0.35em)
       #text(font: font-head, fill: ink, weight: "bold", size: 23pt)[#it.body]
       #v(0.45em)
       #line(length: 100%, stroke: 0.8pt + accent)
@@ -127,9 +141,14 @@
         for h in query(heading.where(level: 1)) {
           if h.location().page() <= n { current = h }
         }
-        let label = if current != none {
+        let label = if current == none {
+          []
+        } else if current.numbering != none {
           [#numbering("1", ..counter(heading).at(current.location())) — #current.body]
-        } else { [] }
+        } else {
+          // An unnumbered chapter (Preface, Appendix): just its title.
+          current.body
+        }
         grid(
           columns: (1fr, auto),
           text(font: font-head, size: size-small, fill: muted, style: "italic")[#title],

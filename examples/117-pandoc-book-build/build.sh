@@ -31,10 +31,11 @@ pandoc "$REPO_ROOT"/book/*.md \
   --lua-filter "$HERE/github-alerts.lua" \
   --output "$OUT/body.typ"
 
-# 2. Prepend the Typst book design (page setup, admonition function, title page,
-#    table of contents) to the converted body, making one standalone document.
+# 2. Prepend head.typ, which imports and applies the Chapter 22 book template
+#    (examples/115), to the converted body, making one document the template
+#    styles from cover to index.
 echo "Assembling ..."
-cat "$HERE/book-preamble.typ" "$OUT/body.typ" > "$OUT/learning-typst.typ"
+cat "$HERE/head.typ" "$OUT/body.typ" > "$OUT/learning-typst.typ"
 
 # 3. Compile to PDF. --root points at the repo so any absolute paths resolve.
 echo "Compiling ..."

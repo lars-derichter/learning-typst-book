@@ -7,11 +7,11 @@
 -- "caution") wrapping an inner Div of class "title". The Typst writer, left
 -- to itself, flattens that to a plain #block and loses the alert's flavour.
 --
--- This filter rewrites each alert Div into a call to a Typst function,
---     #admonition("note")[ ... the alert body ... ]
--- which the book template defines and styles. The body blocks are left as
--- ordinary Pandoc blocks so the writer still converts them normally; only
--- thin RawBlock wrappers of Typst code are added around them.
+-- This filter rewrites each alert Div into a call to the matching Typst
+-- admonition function the book template exports,
+--     #note[ ... the alert body ... ]   (or #tip, #important, #warning, #caution)
+-- The body blocks are left as ordinary Pandoc blocks so the writer still
+-- converts them normally; only thin RawBlock wrappers of Typst code are added.
 --
 -- It also drops raw HTML (the <!-- SOLUTIONS --> comments in the chapters)
 -- so nothing meant for the author leaks into the printed book.
@@ -34,7 +34,8 @@ function Div(el)
         end
       end
 
-      local out = { pandoc.RawBlock("typst", '#admonition("' .. class .. '")[') }
+      -- The template exports a function per kind: #note, #tip, #important, …
+      local out = { pandoc.RawBlock("typst", "#" .. class .. "[") }
       for _, blk in ipairs(body) do
         table.insert(out, blk)
       end
