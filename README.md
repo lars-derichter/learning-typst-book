@@ -12,9 +12,10 @@ full O'Reilly-style book template, and typesetting an entire manuscript from
 Markdown with Pandoc.
 
 You don't need to know LaTeX. You don't need to be a programmer. You need a
-computer, some curiosity, and the willingness to run a few examples. Every code
-example in this book is a real, self-contained project in [`examples/`](examples/)
-that compiles with **Typst 0.15.0** — no hand-waving, no "left as an exercise"
+computer, some curiosity, and the willingness to run a few examples. Every
+code example in this book is a real, self-contained project in
+[`examples/`](examples/) that compiles with **Typst 0.15.0** — no hand-waving,
+no "left as an exercise"
 snippets that don't actually run.
 
 > [!NOTE]
@@ -141,6 +142,16 @@ You'll need [Pandoc](https://pandoc.org) (3.x) and Typst on your `PATH`.
 - For the whole-book build: **Pandoc 3.x**.
 - That's it. Typst bundles its own fonts, so the examples render the same
   everywhere.
+
+## How this book was written
+
+This book was written by a human directing an AI, under human quality control,
+with every code example verified against a real Typst compiler. The whole
+process is documented openly in [`writing-this-book/`](writing-this-book/) — the
+original prompt, the scoping questions, the plan, the style guide the AI held
+itself to, and the managing-editor-plus-sub-agents workflow that produced it.
+The repository doubles as a small case study in using generative AI in a
+deliberate, quality-controlled way.
 
 ## Licensing
 
