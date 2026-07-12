@@ -1,0 +1,16 @@
+# typst.toml — a TEMPLATE package manifest. It has everything a normal package
+# has, plus a [template] section. That extra section is what makes
+# `typst init @preview/tidy-report` work: it tells Typst which folder to copy
+# into the user's new project and which file to open first.
+[package]
+name = "tidy-report"
+version = "0.1.0"
+entrypoint = "lib.typ"
+authors = ["Your Name <you@example.com>"]
+license = "MIT-0"
+description = "A minimal, no-fuss report template."
+
+[template]
+path = "template"        # folder copied into the new project
+entrypoint = "main.typ"  # file the user starts editing
+thumbnail = "thumbnail.png"

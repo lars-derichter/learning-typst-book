@@ -1,0 +1,10 @@
+# typst.toml — the package manifest. This is the whole difference between "a
+# .typ file" and "a package": a bit of metadata that tells Typst (and Universe)
+# what the package is called, which version it is, and which file to load.
+[package]
+name = "callout-box"
+version = "0.1.0"
+entrypoint = "lib.typ"
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+description = "A tiny titled callout box."
