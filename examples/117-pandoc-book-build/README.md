@@ -40,7 +40,7 @@ same pipeline from the repo root.)
 - **`back-matter.typ`** — the closing pages concatenated *after* the body:
   "About the authors", a colophon with the licence and the Creative Commons
   badges, and a back-cover blurb. These make the standalone PDF stand alone.
-- **`assets/`** — `cover-animal.svg` (the ouroboros line-art, original work;
+- **`assets/`** — `cover-animal.png` (the ouroboros engraving on the cover;
   swap this one file to change the cover creature) and `cc/` (the four official
   Creative Commons badge SVGs used on the colophon).
 - **`out.png`** — a preview of the produced book's cover. The full PDF

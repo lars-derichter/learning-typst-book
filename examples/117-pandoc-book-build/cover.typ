@@ -5,8 +5,10 @@
 // the book's teal palette, with no borrowed wordmark or trade dress. The animal
 // is an ouroboros — a snake biting its own tail — because that is exactly what
 // this book does: it typesets itself ("the snake, contentedly, eats its tail",
-// Chapter 24). The drawing is original line-art (assets/cover-animal.svg); swap
-// that one file to change the creature.
+// Chapter 24). The illustration is a naturalistic engraving in the old
+// natural-history-plate style (assets/cover-animal.png); swap that one file to
+// change the creature. Its warm off-white ground is matched by the page fill
+// below, so the plate melts into the cover.
 //
 // `cover` is a content value the build passes to the template's `cover:` slot,
 // which lays it down as the very first page. Paths are absolute from the repo
@@ -14,13 +16,17 @@
 
 #import "/examples/115-oreilly-book-template/template/theme.typ": *
 
+// The cream ground of the engraving plate, sampled from the image itself, so
+// the plate blends seamlessly into the page with no visible bounding box.
+#let cream = rgb(249, 249, 244)
+
 #let cover = page(
   width: 21cm,
   height: 29.7cm,
   margin: 0cm,
   header: none,
   footer: none,
-  fill: white,
+  fill: cream,
 )[
   #set text(font: font-head, fill: ink)
 
@@ -53,7 +59,7 @@
 
   // The creature.
   #v(0.7cm)
-  #image("/examples/117-pandoc-book-build/assets/cover-animal.svg", width: 10.6cm)
+  #image("/examples/117-pandoc-book-build/assets/cover-animal.png", width: 10cm)
   #v(0.15cm)
   #text(size: 9.5pt, fill: muted, style: "italic")[
     The ouroboros — a book that typesets itself.
