@@ -102,6 +102,7 @@ chapter builds on the last and ends with exercises (solutions in
 - [C. Word / Google Docs → Typst migration map](book/27-appendix-c-word-migration.md)
 - [D. Quick-reference cheat sheet](book/28-appendix-d-cheat-sheet.md)
 - [E. Resources and where to go next](book/29-appendix-e-resources.md)
+- [F. Pandoc, in practice](book/30-appendix-f-pandoc.md)
 
 ## Running the examples
 
