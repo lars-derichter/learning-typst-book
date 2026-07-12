@@ -138,6 +138,36 @@ the file was technically valid, so the only way to catch the problem was to open
 it in the one tool a reader happened to use. "Renders on GitHub" is not "renders
 everywhere," and there is no substitute for looking.
 
+## A tip that fell off the edge of a page
+
+Then a fault the source could never show, only the printed page. Near the foot
+of the first chapter, a Tip admonition had torn in two: its green "TIP" label
+sat alone at the bottom of one page, and the sentence it belonged to began at
+the top of the next. A stranded label is bad anywhere; in a book *about
+typesetting* it is an admission against interest.
+
+The cause was a default doing its job. A Typst `block` is breakable — it will
+split across a page boundary so that prose flows naturally — and the admonition
+box was a plain block that had never said otherwise. Body text wants that
+behaviour; a callout is a single visual object and wants the opposite. The fix
+was one line in the template's `admonition` function, `breakable: false`, which
+tells Typst to move the whole box to the next page rather than tear it. Because
+every admonition — note, tip, warning, and the rest — is stamped from that one
+function, and because the Markdown pipeline of Chapter 24 imports the very same
+function, the single line repaired the sampler and the full book at once. That
+is the template thesis of Chapter 22 collecting on itself again: fix the box
+once, and all five boxes in both books are fixed. The prose in Chapter 22 that
+walks through the box now names the line and says why it is there, so the rule
+is taught, not just applied.
+
+It is worth naming why this one hid so long. It is invisible in the Markdown, in
+the Typst body, in every intermediate file; it exists only at the moment a
+specific box lands a specific distance down a specific page, and only a person
+paging through the actual PDF would ever meet it. The same lesson as the dead
+links and the missing contents entries, wearing a third costume: the source can
+be flawless and the output still wrong, and there is no substitute for looking
+at what came out.
+
 ## The real lesson
 
 A book, like a program, is never finished, only shipped. What lets it keep
