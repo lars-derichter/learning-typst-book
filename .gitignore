@@ -1,0 +1,10 @@
+# Whole-book build output (regenerate with scripts/build-book.sh)
+/build/
+/learning-typst.pdf
+
+# Editor / OS cruft
+.DS_Store
+*.swp
+
+# Typst per-page PNG scratch (we commit a single out.png per example)
+page-*.png
