@@ -142,7 +142,7 @@ That `=` at the start of the first line marks a heading, exactly as in Chapter
 typst compile main.typ out.pdf
 ```
 
-Open `out.pdf`. There's your document: a bold heading over a justified,
+Open `out.pdf`. There's your document: a bold heading over a neatly set,
 properly typeset paragraph, on a clean page. You wrote structure; Typst supplied
 the typography.
 

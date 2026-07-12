@@ -1,10 +1,10 @@
 # Markup: the content layer
 
 Open a blank file and type a sentence. Compile it. You get that sentence set in
-a real typeface, justified, hyphenated where it needs to be — a paragraph, and a
-handsome one, from a line you typed without a thought. You never asked for any
-of that. Typst assumed it, because prose is the default. A file with nothing
-special in it is already a document.
+a real typeface, with proper kerning and ligatures and its lines broken to fit —
+a paragraph, and a handsome one, from a line you typed without a thought. You
+never asked for any of that. Typst assumed it, because prose is the default. A
+file with nothing special in it is already a document.
 
 Everything else in this chapter is a small, deliberate deviation from that
 default: a stroke of punctuation that tells Typst "this part is a heading,"
@@ -39,7 +39,7 @@ several   lines   with   odd
 spacing in the source.
 ```
 
-comes out as one tidy line of prose, respaced and rejustified to fit the page.
+comes out as one tidy line of prose, respaced and rewrapped to fit the page.
 Your source can be as ragged as you like; the output won't care. This is a
 feature, not a quirk: you get to wrap your source at a comfortable width (this
 book wraps at 80 columns) without those wraps leaking into the page.

@@ -11,7 +11,7 @@ had to ask for.
 ```
 
 Feed it to Typst and, in the time it takes to blink, you get a PDF: a crisp
-heading, a justified paragraph, proper typography, the works. No document class
+heading, a neat paragraph, proper typography, the works. No document class
 to choose. No preamble to copy from a forum post you half understand. No
 "package `float` not found." You wrote content; you got a document.
 
@@ -81,8 +81,8 @@ Hyphens make a bullet list. That's Example 01 in the book's repository
 ([`examples/01-hello-typesetting/`](../examples/01-hello-typesetting/)), and it
 renders exactly what you'd hope:
 
-> **Hello, Typst** — a bold heading over a neatly justified paragraph and a
-> tidy bullet list, all from plain text.
+> **Hello, Typst** — a bold heading over a cleanly set paragraph and a tidy
+> bullet list, all from plain text.
 
 But here's where Typst leaves ordinary markup behind. Underneath the friendly
 surface sits a real programming language, and you can drop into it any time you
