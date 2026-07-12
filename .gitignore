@@ -1,12 +1,17 @@
 # Whole-book build output (regenerate with scripts/build-book.sh)
 /build/
-/learning-typst.pdf
+# NOTE: the finished /learning-typst.pdf at the repo root IS committed on
+# purpose — it's the distributable book. Regenerate it with scripts/build-book.sh
+# and copy build/learning-typst.pdf to the root.
 # The Pandoc example's own build output (regenerate with its build.sh)
 examples/117-pandoc-book-build/out/
 
 # Editor / OS cruft
 .DS_Store
 *.swp
+
+# Local Claude Code settings (machine-specific)
+.claude/settings.local.json
 
 # Typst per-page PNG scratch (we commit a single out.png per example)
 page-*.png

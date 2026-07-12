@@ -4,6 +4,16 @@
 > typesetting system — in the spirit of the old O'Reilly *Learning* books:
 > readable, occasionally funny, and thorough enough to actually finish the job.
 
+## 📕 Just here to read it?
+
+**[Download the finished book — `learning-typst.pdf`](learning-typst.pdf)**
+
+The whole thing, typeset by its own pipeline: a cover, ~190 A4 pages, a linked
+table of contents, styled admonition boxes, themed code, real math, and every
+example rendered in place. If you want to *read* Typst rather than watch a book
+get built, start there — everything below is for the curious and the
+contributors.
+
 Typst is a markup-based typesetting system — think of it as what you'd get if
 you crossed the readability of Markdown with the power of LaTeX, then handed the
 result to people who like fast feedback and sensible error messages. This book
