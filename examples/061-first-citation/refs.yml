@@ -1,0 +1,21 @@
+sweller1988:
+  type: article
+  title: "Cognitive load during problem solving: Effects on learning"
+  author: Sweller, John
+  date: 1988
+  parent:
+    type: periodical
+    title: Cognitive Science
+    volume: 12
+    issue: 2
+  page-range: 257-285
+  serial-number:
+    doi: "10.1207/s15516709cog1202_4"
+
+mcluhan1964:
+  type: book
+  title: "Understanding media: The extensions of man"
+  author: McLuhan, Marshall
+  date: 1964
+  publisher: McGraw-Hill
+  location: New York

@@ -1,0 +1,59 @@
+sweller1988:
+  type: article
+  title: "Cognitive load during problem solving: Effects on learning"
+  author: Sweller, John
+  date: 1988
+  parent:
+    type: periodical
+    title: Cognitive Science
+    volume: 12
+    issue: 2
+  page-range: 257-285
+  serial-number:
+    doi: "10.1207/s15516709cog1202_4"
+
+deci2000:
+  type: article
+  title: 'The "what" and "why" of goal pursuits: Human needs and the
+    self-determination of behavior'
+  author: ["Deci, Edward L.", "Ryan, Richard M."]
+  date: 2000
+  parent:
+    type: periodical
+    title: Psychological Inquiry
+    volume: 11
+    issue: 4
+  page-range: 227-268
+  serial-number:
+    doi: "10.1207/S15327965PLI1104_01"
+
+hattie2007:
+  type: article
+  title: "The power of feedback"
+  author: ["Hattie, John", "Timperley, Helen", "Clarke, Shirley"]
+  date: 2007
+  parent:
+    type: periodical
+    title: Review of Educational Research
+    volume: 77
+    issue: 1
+  page-range: 81-112
+  serial-number:
+    doi: "10.3102/003465430298487"
+
+mcluhan1964:
+  type: book
+  title: "Understanding media: The extensions of man"
+  author: McLuhan, Marshall
+  date: 1964
+  publisher: McGraw-Hill
+  location: New York
+
+typst-bib:
+  type: web
+  title: "Bibliography"
+  author: Typst
+  date: 2024-06-01
+  url:
+    value: https://typst.app/docs/reference/model/bibliography/
+    date: 2024-06-01
