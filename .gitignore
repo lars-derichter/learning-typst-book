@@ -10,8 +10,8 @@ examples/117-pandoc-book-build/out/
 .DS_Store
 *.swp
 
-# Local Claude Code settings (machine-specific)
-.claude/settings.local.json
+# Claude Code local settings and state
+.claude/
 
 # Typst per-page PNG scratch (we commit a single out.png per example)
 page-*.png
