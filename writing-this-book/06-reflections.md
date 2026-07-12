@@ -1,9 +1,13 @@
 # Reflections
 
 > [!NOTE]
-> This file is written from inside the process, and gets a final revision once
-> the book is finished (with the concrete tallies — chapters, examples,
-> commits). The observations below, though, held steady from early on.
+> The book is finished. The final shape: a preface, 24 chapters, and 5
+> appendices — about 97,000 words — alongside 117 self-contained example
+> projects, every one compiled against Typst 0.15.0 and committed with its
+> rendered output. The whole thing typesets itself from its Markdown source
+> into a 299-page PDF via the Chapter 24 pipeline. It arrived in roughly 40
+> atomic commits on a single branch. The observations below held steady from
+> early on.
 
 Lars's stated reason for keeping this record was that he wants to reuse the
 repository as an example of using generative AI in a *meaningful* way. So this
