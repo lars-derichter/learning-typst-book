@@ -38,10 +38,12 @@ for chapter in "$REPO_ROOT"/book/*.md; do
   printf '\n\n' >> "$OUT/body.typ"
 done
 
-# Prepend the head (which imports and applies the Chapter 22 book template)
-# to the converted body, making one document the template styles end to end.
+# Wrap the converted body: the head (imports and applies the Chapter 22 book
+# template, with the cover) in front, the back matter (About the authors,
+# colophon + licence, back cover) after — one document the template styles end
+# to end.
 echo "Assembling the book ..."
-cat "$PIPE/head.typ" "$OUT/body.typ" > "$OUT/learning-typst.typ"
+cat "$PIPE/head.typ" "$OUT/body.typ" "$PIPE/back-matter.typ" > "$OUT/learning-typst.typ"
 
 echo "Compiling with Typst ..."
 typst compile --root "$REPO_ROOT" "$OUT/learning-typst.typ" "$OUT/learning-typst.pdf"

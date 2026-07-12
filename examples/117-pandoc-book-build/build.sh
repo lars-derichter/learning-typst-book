@@ -36,11 +36,12 @@ for chapter in "$REPO_ROOT"/book/*.md; do
   printf '\n\n' >> "$OUT/body.typ"
 done
 
-# 2. Prepend head.typ, which imports and applies the Chapter 22 book template
-#    (examples/115), to the converted body, making one document the template
-#    styles from cover to index.
+# 2. Wrap the converted body: head.typ (imports and applies the Chapter 22 book
+#    template from examples/115, with the cover) goes in front; back-matter.typ
+#    (About the authors, colophon + licence, back cover) goes after. One
+#    document the template styles from cover to cover.
 echo "Assembling ..."
-cat "$HERE/head.typ" "$OUT/body.typ" > "$OUT/learning-typst.typ"
+cat "$HERE/head.typ" "$OUT/body.typ" "$HERE/back-matter.typ" > "$OUT/learning-typst.typ"
 
 # 3. Compile to PDF. --root points at the repo so any absolute paths resolve.
 echo "Compiling ..."

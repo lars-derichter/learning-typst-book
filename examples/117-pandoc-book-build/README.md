@@ -30,10 +30,20 @@ same pipeline from the repo root.)
   per chapter file (passing `CHAPTER_NAME`) so each chapter can be labelled for
   those internal jumps.
 - **`head.typ`** — imports and applies the **Chapter 22 book template**
-  (`../115-oreilly-book-template/`), passing an A4 page; the converted body is
-  concatenated after it, so the same template that Chapter 22 builds by hand
-  styles the whole Markdown-sourced book, cover to index.
-- **`out.png`** — a preview of the produced book's title page. The full PDF
+  (`../115-oreilly-book-template/`), passing an A4 page and the cover; the
+  converted body is concatenated after it, so the same template that Chapter 22
+  builds by hand styles the whole Markdown-sourced book, cover to back cover.
+- **`cover.typ`** — the front cover: an affectionate homage to the classic
+  animal-book covers (framed, teal, its own trade dress), fed to the template's
+  `cover:` slot. The creature is an ouroboros — a snake eating its own tail,
+  because that is what this book does.
+- **`back-matter.typ`** — the closing pages concatenated *after* the body:
+  "About the authors", a colophon with the licence and the Creative Commons
+  badges, and a back-cover blurb. These make the standalone PDF stand alone.
+- **`assets/`** — `cover-animal.svg` (the ouroboros line-art, original work;
+  swap this one file to change the cover creature) and `cc/` (the four official
+  Creative Commons badge SVGs used on the colophon).
+- **`out.png`** — a preview of the produced book's cover. The full PDF
   (a couple of hundred pages) is written to `out/` and is not committed.
 
 ## Requirements

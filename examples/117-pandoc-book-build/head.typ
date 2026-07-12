@@ -12,15 +12,17 @@
 
 #import "/examples/115-oreilly-book-template/template/book.typ": book
 #import "/examples/115-oreilly-book-template/template/admonitions.typ": note, tip, important, warning, caution
+#import "/examples/117-pandoc-book-build/cover.typ": cover
 
-// Apply the template. The only build-specific choices are the book's metadata
-// and the page size: example 115's sampler uses the template's small default
-// page, but a ~300-page book with wide code listings wants the room, so we
-// pass an A4.
+// Apply the template. The build-specific choices are the book's metadata, the
+// cover (an O'Reilly-homage animal cover, see cover.typ), and the page size:
+// example 115's sampler uses the template's small default page, but a ~300-page
+// book with wide code listings wants the room, so we pass an A4.
 #show: book.with(
   title: "Learning Typst",
   subtitle: "A hands-on guide to the Typst typesetting system",
-  author: "Written with AI, under human direction",
+  author: "Lars De Richter, with Claude (Opus 4.8)",
+  cover: cover,
   width: 21cm,
   height: 29.7cm,
   margin: (x: 2cm, top: 2.2cm, bottom: 2cm),

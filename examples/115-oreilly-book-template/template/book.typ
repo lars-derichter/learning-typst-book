@@ -65,6 +65,10 @@
   title: none,
   subtitle: none,
   author: none,
+  // An optional cover: any content (typically a full-bleed `#page`) laid down
+  // before the title page. `none` keeps the plain sampler unchanged; the Pandoc
+  // build (Chapter 24) passes a full O'Reilly-homage cover here.
+  cover: none,
   // Page geometry is a parameter so the same template serves both this small
   // sampler and a full-size book. The defaults keep the multipage preview
   // legible; a real book (see the Pandoc pipeline in Chapter 24) passes an A4.
@@ -122,6 +126,8 @@
   show figure.caption: set text(size: size-small, fill: muted)
 
   // === Front matter ===
+  // The cover (if any) comes first, then the title page and the contents.
+  if cover != none { cover }
   _title-page(title, subtitle, author)
   _contents-page()
 
