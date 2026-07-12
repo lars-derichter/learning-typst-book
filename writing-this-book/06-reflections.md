@@ -78,6 +78,19 @@ If there's a transferable recipe here, it's roughly this:
    splitting the writer and editor roles keeps a big job coherent.
 6. **Commit small and inspect before you do.** The history becomes your audit
    trail and your undo button.
+7. **Let existing tools do the mechanical work — and make the AI reach for
+   them.** A real amount of effort here went into hand-keeping every line under
+   80 columns, and even into writing a little script to reflow prose — which
+   promptly grew a bug of its own. A standard formatter, wired in as a commit
+   gate from day one, would have done that more reliably and freed the attention
+   for the parts that needed judgment. The deeper lesson is about defaults: an
+   AI will cheerfully hand-roll a scriptlet for a rote task unless you point it
+   at the tool that already exists — so make "is there a standard tool for
+   this?" part of the brief, and expect it to name the ones it knows. One
+   caveat, learned later and the hard way: don't adopt a formatter blindly. Run
+   naively, a popular one silently collapsed this book's `> [!NOTE]` admonitions
+   and rewrote its emphasis style — so a tool, too, needs configuring and
+   checking like anything else.
 
 ## The honest bottom line
 
