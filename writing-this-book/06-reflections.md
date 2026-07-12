@@ -1,8 +1,8 @@
 # Reflections
 
 > [!NOTE]
-> The book is finished. The final shape: a preface, 24 chapters, and 5
-> appendices — about 97,000 words — alongside 117 self-contained example
+> The book is finished. The shape it reached that day: a preface, 24 chapters,
+> and 5 appendices — about 97,000 words — alongside 117 self-contained example
 > projects, every one compiled against Typst 0.15.0 and committed with its
 > rendered output. The whole thing typesets itself from its Markdown source,
 > through the Chapter 24 pipeline, into a ~185-page A4 PDF — styled by the very
@@ -11,8 +11,8 @@
 
 Lars's stated reason for keeping this record was that he wants to reuse the
 repository as an example of using generative AI in a *meaningful* way. So this
-last file steps back from the how and asks the harder question: what actually
-made this a good use of the technology, as opposed to a flashy one?
+file steps back from the how and asks the harder question: what actually made
+this a good use of the technology, as opposed to a flashy one?
 
 ## What made it work
 
@@ -88,3 +88,9 @@ accountability, machine volume and tirelessness, a compiler holding both to
 account — is, as far as this project can tell, what "meaningful use" actually
 means in practice. Not the absence of human effort. The concentration of it on
 the parts that matter.
+
+> [!NOTE]
+> This was written the day the book was first declared finished. Finishing, it
+> turned out, was not the end of the work — only the end of the *first* round.
+> What happened next, and why "done" proved such a soft word, is the subject of
+> the next file, [After the first finish](07-after-the-first-finish.md).
