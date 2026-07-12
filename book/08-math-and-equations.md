@@ -171,11 +171,13 @@ $V_"max"$ and $k_"cat"$ set "max" and "cat" as upright labels.
 ```
 
 When you need an operator Typst doesn't already know, build one with `op` and a
-quoted name. Give it `limits: true` if its sub- and superscripts should stack
-above and below in display mode, the way `lim` and `sum` do:
+quoted name. Give it `limits: #true` if its sub- and superscripts should stack
+above and below in display mode, the way `lim` and `sum` do. (The `#` is needed
+because inside math a bare `true` would read as a variable name; `#true` drops
+into code for the actual boolean.)
 
 ```typ
-$ op("argmax", limits: true)_(x in X) f(x) $
+$ op("argmax", limits: #true)_(x in X) f(x) $
 ```
 
 If you use the same operator often, define it once in code and reuse the name:
