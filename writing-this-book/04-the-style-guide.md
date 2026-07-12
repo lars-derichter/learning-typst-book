@@ -120,10 +120,13 @@ cleanly.
 
 The brief then lists the canonical filename for every chapter (`book/00-preface`
 through `book/29-appendix-e-resources`) and a table assigning each chapter a
-disjoint block of example numbers (ch01: 01–02, ch02: 03–05, ch03: 06–11, and so
-on). Agents cross-reference other chapters by these names and stay strictly
-inside their own number block, which is what makes safe parallel writing
-possible.
+disjoint block of example numbers (ch01: 001–002, ch02: 003–005, ch03: 006–011,
+and so on). Example folders carry a three-digit zero-padded prefix — the scheme
+was widened from two digits to three once it was clear the book would run past a
+hundred examples, which is exactly the kind of small structural correction a
+managing editor makes mid-stream. Agents cross-reference other chapters by these
+names and stay strictly inside their own number block, which is what makes safe
+parallel writing possible.
 
 ### 9. Quality bar (what "done" means)
 

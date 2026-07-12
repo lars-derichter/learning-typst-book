@@ -115,7 +115,7 @@ the first font handles the ordinary letters, and a later font quietly supplies
 the rest. Behind your list Typst keeps its own last-resort fonts, so a glyph is
 almost never simply lost.
 
-`examples/12-fonts-and-families/` sets one sentence in each of three bundled
+`examples/012-fonts-and-families/` sets one sentence in each of three bundled
 faces so you can compare them side by side, and shows the list syntax at work.
 
 ## Size, weight, and style
@@ -152,7 +152,7 @@ the separate cursive design a type designer drew; oblique is a mechanical slant
 of the upright. Most serif fonts give you a real italic, so asking for oblique
 usually lands you on the italic anyway.
 
-`examples/13-size-weight-style/` lays all three axes out in a row. And recall
+`examples/013-size-weight-style/` lays all three axes out in a row. And recall
 from Chapter 3 that `*strong*` and `_emph_` are markup shortcuts for bold and
 italic — you don't need the long form for ordinary writing.
 
@@ -203,7 +203,7 @@ Each of these is a real function with its own options.
 `#highlight(fill: rgb("#fff3b0"))[...]` recolors the band, and
 `#underline(stroke: 1.5pt + red, offset: 3pt)[...]` thickens the rule and
 drops it lower. You rarely need the options, but they're there when a house
-style demands them. `examples/14-color-and-decorations/` collects the lot.
+style demands them. `examples/014-color-and-decorations/` collects the lot.
 
 > **Coming from Word.** The highlighter button and the font-color dropdown you
 > know from the toolbar are `#highlight[...]` and `#text(fill: ...)[...]` here.
@@ -244,7 +244,7 @@ else.
 #text(number-width: "tabular")[1,111]
 ```
 
-`examples/15-figures-and-numbers/` shows both figure styles and a small table
+`examples/015-figures-and-numbers/` shows both figure styles and a small table
 where the tabular column lines up cleanly and, for contrast, a proportional one
 that doesn't.
 
@@ -307,7 +307,7 @@ Force it on with `hyphenate: true` or off with `hyphenate: false`:
 #set text(hyphenate: false)
 ```
 
-`examples/17-language-and-hyphenation/` sets a deliberately narrow, justified
+`examples/017-language-and-hyphenation/` sets a deliberately narrow, justified
 column both ways so you can watch hyphenation earn its keep: with it on, word
 spacing stays even; with it off, the same lines have to stretch to fill the
 width, and the gaps yawn.
@@ -383,16 +383,16 @@ SOLUTIONS (notes for the appendix author):
       warning. Lesson: named-but-missing fonts compile but aren't reproducible.
 4.3 - Water: H#sub[2]O. Carbon dioxide: CO#sub[2]. Physics: E = mc#super[2]
       (the ² can be typed as #super[2] or as the literal character). Small caps:
-      #smallcaps[Belgium] (any country name). Mirrors example 16.
+      #smallcaps[Belgium] (any country name). Mirrors example 016.
 4.4 - Right-aligned tabular figures line up digit-for-digit in a neat column
       (equal digit widths); proportional figures give a ragged look because a 1
       is narrower than other digits, so the columns of digits don't align even
       when the numbers are right-aligned. Use number-width: "tabular" vs
-      "proportional". Mirrors example 15.
+      "proportional". Mirrors example 015.
 4.5 - #set page(width: 7cm); #set par(justify: true); #set text(lang: "fr").
       French uses guillemets and its own hyphenation patterns, so line
       breaks fall in different places than English. With hyphenate: false the
       justified lines stretch, opening larger word gaps. No single right
       preference; credit a coherent "why" tied to even spacing vs. broken words.
-      Mirrors example 17.
+      Mirrors example 017.
 -->

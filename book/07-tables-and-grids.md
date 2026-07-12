@@ -22,7 +22,7 @@ first, and meet the bare `grid` at the end.
 
 ## The shape of a table
 
-Here is a whole table, start to finish (`examples/30-basic-table/`):
+Here is a whole table, start to finish (`examples/030-basic-table/`):
 
 ```typ
 #table(
@@ -69,7 +69,7 @@ an image, another table if you're feeling reckless. The bold labels are just
 `columns: 3` is shorthand. What Typst actually wants is a list of *column
 tracks*, and `3` is a friendly way of saying "three tracks, each `auto`." Spell
 the list out and you control every column's width. There are three kinds of
-track, and you'll mix them constantly (`examples/31-column-sizes/`):
+track, and you'll mix them constantly (`examples/031-column-sizes/`):
 
 ```typ
 #table(
@@ -131,7 +131,7 @@ right.
 The most powerful shape is a *function*. Instead of a fixed list, you hand
 `align` a little rule that receives a cell's column `x` and row `y` (both
 counting from zero) and returns an alignment for it. That sounds abstract until
-you see what it's for (`examples/32-alignment/`):
+you see what it's for (`examples/032-alignment/`):
 
 ```typ
 #table(
@@ -159,7 +159,7 @@ A `fill` colours the background of cells, and it takes exactly the same three
 shapes as `align`: one colour for everything, a list per column, or a function
 of `(x, y)`. The function is where it earns its keep, because it's how you get
 *zebra striping* — that alternating shaded-row look that makes a wide table
-readable across (`examples/33-striped-table/`):
+readable across (`examples/033-striped-table/`):
 
 ```typ
 #table(
@@ -198,7 +198,7 @@ Marking your top row as a *header* does two useful things: it tells Typst (and
 anyone reading the PDF's structure, including screen readers) that this row
 labels the columns, and it makes that row *repeat automatically at the top of
 every page* when a long table breaks across several. You get it by wrapping the
-first row's cells in `table.header` (`examples/34-header-row/`):
+first row's cells in `table.header` (`examples/034-header-row/`):
 
 ```typ
 #table(
@@ -238,7 +238,7 @@ expect; their powers show up the moment the table grows past a page.
 Real tables aren't always perfect grids. A title stretches across the top; a
 category label covers three rows beneath it. Those are *spans*, and they're two
 arguments on `table.cell`: `colspan` to reach across columns, `rowspan` to reach
-down rows (`examples/35-spanning-cells/`):
+down rows (`examples/035-spanning-cells/`):
 
 ```typ
 #table(
@@ -293,7 +293,7 @@ that LaTeX users know as *booktabs* — there's a more direct tool. Instead of
 reasoning about which cell owns which border, you place horizontal and vertical
 rules yourself with `table.hline` and `table.vline`, dropped straight into the
 cell list at the point where you want the line drawn
-(`examples/36-custom-strokes/`):
+(`examples/036-custom-strokes/`):
 
 ```typ
 #table(
@@ -340,7 +340,7 @@ add room but in different places.
 `inset` is the padding *inside* each cell — the gap between the cell's content
 and its border. The default is a sensible few points; bump it up for an airier
 table (`inset: 10pt`) or shrink it for a dense one. You can make it asymmetric
-with a dictionary, exactly as example 36 does: `inset: (x: 10pt, y: 6pt)` gives
+with a dictionary, exactly as example 036 does: `inset: (x: 10pt, y: 6pt)` gives
 wide horizontal padding and tighter vertical, a common tweak that stops columns
 feeling cramped without making rows too tall.
 
@@ -359,7 +359,7 @@ this is tabular data (headers, the accessibility structure a screen reader
 announces as a table). Strip those away and you get `grid`, which lays content
 out on a grid and draws nothing and claims nothing about what the content
 *means*. It's Typst's tool for pure page layout
-(`examples/37-grid-for-layout/`):
+(`examples/037-grid-for-layout/`):
 
 ```typ
 #grid(
@@ -453,7 +453,7 @@ of weekdays, and at least one cell that spans two rows (a "lunch" block covering
 two time slots, say). Count your cells per row carefully — this is the exercise
 where miscounting bites.
 
-7.4. Reproduce the booktabs look from `examples/36-custom-strokes/` on data of
+7.4. Reproduce the booktabs look from `examples/036-custom-strokes/` on data of
 your own: no vertical lines, a thick rule top and bottom, a thin rule under the
 header, and comfortable `inset`. Then add one `table.vline` to separate a group
 of columns from the rest and judge whether it improves or clutters the result.

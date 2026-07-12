@@ -129,7 +129,7 @@ find one that doesn't, that's a bug, and you should feel entitled to complain.
 To run any example yourself:
 
 ```sh
-cd examples/01-hello-typesetting
+cd examples/001-hello-typesetting
 typst compile main.typ out.pdf
 ```
 

@@ -110,7 +110,7 @@ with the Typst source (`main.typ`), a short `README.md`, and committed renders
 (`out.pdf` and a `out.png` preview). To build one yourself:
 
 ```sh
-cd examples/01-hello-typesetting
+cd examples/001-hello-typesetting
 typst compile main.typ out.pdf
 ```
 

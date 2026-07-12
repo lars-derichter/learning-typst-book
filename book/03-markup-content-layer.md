@@ -56,7 +56,7 @@ Belgium
 
 The trailing `\` forces a hard line break *within* the same paragraph. It's the
 one case where your source's line ending survives into the output. See
-`examples/06-headings-and-paragraphs/` for headings and both kinds of break in
+`examples/006-headings-and-paragraphs/` for headings and both kinds of break in
 one small file.
 
 > [!NOTE]
@@ -112,7 +112,7 @@ one called `strong`. You can call them the long way — `#emph[like this]` and
 text from code rather than typing it by hand. That `#` is the doorway into
 Typst's programming language; Chapter 13 walks through it properly. For plain
 writing, the underscores and asterisks are all you need. Example
-`examples/07-emphasis-and-raw/` shows emphasis, nesting, and raw text together.
+`examples/007-emphasis-and-raw/` shows emphasis, nesting, and raw text together.
 
 > **Coming from Markdown.** Both delimiters are *single* here. Markdown makes
 > you double the asterisks for bold (`**bold**`) and reserves single ones for
@@ -185,7 +185,7 @@ numbers under bullets, however the content wants to be shaped:
 ```
 
 Indentation is what creates the nesting, so keep it consistent within a list.
-`examples/08-lists/` collects all of these, plus the third kind.
+`examples/008-lists/` collects all of these, plus the third kind.
 
 That third kind is the *term list*, for pairing a name with its definition — a
 glossary, a cast of characters, a set of options:
@@ -202,7 +202,7 @@ Typst sets the term apart (bold, by default) and lays the description beside it.
 > A block sitting flush against a list — a fenced code block, say — ends the
 > list, and a following `+` item starts counting again from one. If you want a
 > code block to belong *inside* an item, indent it to line up under that item's
-> text. The meeting note in `examples/11-a-structured-note/` does exactly this
+> text. The meeting note in `examples/011-a-structured-note/` does exactly this
 > to keep a shell block tucked inside step two.
 
 ## Links
@@ -225,7 +225,7 @@ That `#link(...)[...]` is your first real look at Typst's function-call shape: a
 `#`, a name, the arguments in parentheses, and content in square brackets.
 You'll see that shape everywhere once you start styling, so it's worth clocking
 now even though functions proper wait for Chapter 13. Links and quotes share
-`examples/09-links-and-quotes/`.
+`examples/009-links-and-quotes/`.
 
 Links don't only point outward. You can also link *within* your document — jump
 to a heading, a figure, an equation — using labels, which is the next stop.
@@ -253,7 +253,7 @@ One more, easy to miss and genuinely useful: a tilde (`~`) is a *non-breaking
 space*. It looks like an ordinary space but Typst won't break the line there, so
 you can keep a number glued to its unit — `10~kg`, `Chapter~9`, `Fig.~3` — and
 never suffer a "10" alone at the end of a line with its "kg" orphaned on the
-next. `examples/10-symbols-and-escapes/` demonstrates every one of these.
+next. `examples/010-symbols-and-escapes/` demonstrates every one of these.
 
 ## Escapes and comments
 
@@ -387,7 +387,7 @@ sentence. Check the compiled PDF to be sure each one landed.
 title and each description a one-line note. Then add, below it, a labeled link
 to where someone could buy or borrow one of them.
 
-3.5. *(Stretch.)* Recreate `examples/11-a-structured-note/` from scratch without
+3.5. *(Stretch.)* Rebuild `examples/011-a-structured-note/` from scratch without
 looking at it — a meeting note or a recipe with a title, a couple of sections,
 at least one numbered list and one bulleted list, an emphasized word, a link,
 and a fenced code (or ingredient) block nested inside a list item. Compile it
@@ -424,6 +424,6 @@ SOLUTIONS (notes for the appendix author):
       syntax and any correct #link("url")[label].
 3.5 - A complete small document combining headings, emphasis, both list kinds, a
       #link, and a fenced block INDENTED under a numbered item so the list keeps
-      counting (1, 2, 3) rather than restarting. Mirrors example 11. Key point
+      counting (1, 2, 3) rather than restarting. Mirrors example 011. Key point
       is the gotcha flagged in the Lists WARNING: a flush block ends the list.
 -->

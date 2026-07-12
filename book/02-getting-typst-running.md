@@ -157,7 +157,7 @@ Notice that you never told Typst you wanted a PDF. It figured that out from the
 `.pdf` on the output name. Typst infers the format from the extension, so
 `out.png` would have given you an image and `out.svg` a vector graphic — more on
 that shortly. The runnable version of this document is in
-[`examples/03-first-document/`](../examples/03-first-document/).
+[`examples/003-first-document/`](../examples/003-first-document/).
 
 > [!NOTE]
 > The example file adds one line you didn't type: `#set page(width: 12cm,
@@ -235,7 +235,7 @@ A PDF is the usual destination, but it isn't the only one. Because Typst infers
 the format from the output extension, you can aim the same source at different
 targets just by renaming the output — or by saying so explicitly with
 `--format`. Using the small document in
-[`examples/04-output-formats/`](../examples/04-output-formats/):
+[`examples/004-output-formats/`](../examples/004-output-formats/):
 
 ```sh
 typst compile main.typ out.pdf
@@ -290,7 +290,7 @@ what the `--root` flag is for: it points the root at a directory you choose.
 This book's own examples are compiled from the repository root exactly this way:
 
 ```sh
-typst compile --root . examples/05-document-metadata/main.typ out.pdf
+typst compile --root . examples/005-document-metadata/main.typ out.pdf
 ```
 
 The `--root .` says "treat the current directory as the project root," so
@@ -302,7 +302,7 @@ While we're looking at real projects: a PDF carries hidden fields — a title, a
 author — that don't print on the page but show up in a reader's "Document
 Properties" panel and in the browser tab when someone opens the file online. You
 set them with `#set document(...)`, as in
-[`examples/05-document-metadata/`](../examples/05-document-metadata/):
+[`examples/005-document-metadata/`](../examples/005-document-metadata/):
 
 ```typ
 #set document(
@@ -357,8 +357,8 @@ nothing but plain text and a handful of symbols.
 `typst --version`. Write down what it prints. If you get "command not found,"
 diagnose it before moving on — a fresh terminal window fixes most cases.
 
-2.2. Compile [`examples/03-first-document/`](../examples/03-first-document/) to
-a PDF and open it. Then change the heading text, save, and compile again.
+2.2. Compile [`examples/003-first-document/`](../examples/003-first-document/)
+to a PDF and open it. Then change the heading text, save, and compile again.
 Confirm the PDF updates. (You've now done by hand the loop that `watch`
 automates.)
 
@@ -367,7 +367,7 @@ viewer open beside it. Edit a word, save, and watch the preview change without
 you touching the terminal. Then type a deliberate error — delete the `]` from a
 piece of code, say — and describe what the terminal shows you.
 
-2.4. Take [`examples/04-output-formats/`](../examples/04-output-formats/) and
+2.4. Take [`examples/004-output-formats/`](../examples/004-output-formats/) and
 export it to PNG twice: once at the default resolution and once with
 `--ppi 300`. Compare the two files' sizes and how sharp they look when you zoom
 in. Which would you send to a printer, and which to a chat message?
@@ -385,14 +385,14 @@ SOLUTIONS (notes for the appendix author):
       cargo install --locked typst-cli). `typst --version` prints e.g.
       "typst 0.15.0". "command not found" = binary not on PATH: open a new
       terminal; ensure the install directory is on PATH.
-2.2 - typst compile examples/03-first-document/main.typ out.pdf (or cd into the
+2.2 - typst compile examples/003-first-document/main.typ out.pdf (or cd into the
       folder first). Editing the `= ` heading line and recompiling changes the
       PDF. Point: output is regenerated from source each compile.
 2.3 - `compiling ...` then `compiled successfully in N ms` on each save. On a
       deliberate error (e.g. removing a closing `]`), watch prints an error with
       the file and line number and keeps watching; fixing it and saving returns
       to a successful compile. Reinforces the fast, forgiving feedback loop.
-2.4 - typst compile examples/04-output-formats/main.typ out.png  (144 ppi
+2.4 - typst compile examples/004-output-formats/main.typ out.png  (144 ppi
       default) vs  typst compile ... out.png --ppi 300. The 300-ppi file is
       larger and stays crisp when zoomed; 144 is lighter and fine on screen.
       Print -> 300; chat/web -> 144 (or lower). Good moment to note ppi = pixels

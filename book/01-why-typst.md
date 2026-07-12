@@ -77,9 +77,9 @@ Two design decisions from that origin shape everything you'll experience:
 Most of what you write in Typst is *markup*: lightweight symbols that mean
 "heading" or "emphasis" or "list item." If you've written Markdown, it will feel
 familiar. A `=` starts a heading. Asterisks around a word make it `*bold*`.
-Hyphens make a bullet list. That's Example 01 in the book's repository
-([`examples/01-hello-typesetting/`](../examples/01-hello-typesetting/)), and it
-renders exactly what you'd hope:
+Hyphens make a bullet list. That's Example 001 in the book's repository
+([`examples/001-hello-typesetting/`](../examples/001-hello-typesetting/)), and
+it renders exactly what you'd hope:
 
 > **Hello, Typst** — a bold heading over a cleanly set paragraph and a tidy
 > bullet list, all from plain text.
@@ -87,7 +87,7 @@ renders exactly what you'd hope:
 But here's where Typst leaves ordinary markup behind. Underneath the friendly
 surface sits a real programming language, and you can drop into it any time you
 like by typing `#`. Watch what that buys you
-([`examples/02-markup-meets-code/`](../examples/02-markup-meets-code/)):
+([`examples/002-markup-meets-code/`](../examples/002-markup-meets-code/)):
 
 ```typ
 = Powers of two

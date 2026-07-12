@@ -70,7 +70,7 @@ for binding, say:
 ```
 
 You can even set some sides in the dictionary and let the rest default. See
-`examples/18-paper-and-margins/` for the paired form on a small page, where the
+`examples/018-paper-and-margins/` for the paired form on a small page, where the
 generous top and bottom are obvious at a glance.
 
 ### Landscape
@@ -123,7 +123,7 @@ footer: [#h(1fr) middle #h(1fr)]
 ```
 
 You'll use `1fr` constantly once you meet it. It's the same idea as a spring:
-give it room and it expands to fill. `examples/19-header-and-footer/` runs a
+give it room and it expands to fill. `examples/019-header-and-footer/` runs a
 title-and-chapter header over a centered footer across two pages.
 
 ## Page numbers
@@ -147,7 +147,7 @@ the style:
 
 `number-align` decides where the number sits — `center` by default, or `left`,
 `right`, and you can add a vertical part like `right + bottom`.
-`examples/20-page-numbering/` sets `"1 / 1"` across a three-page document, so
+`examples/020-page-numbering/` sets `"1 / 1"` across a three-page document, so
 the footer counts "1 / 3", "2 / 3", "3 / 3".
 
 > [!WARNING]
@@ -191,7 +191,7 @@ Two columns, newspaper style, is one word:
 
 Text now flows down the left column and continues at the top of the right,
 spilling onto the next page when both are full. Everything on the page — body,
-headings, the lot — obeys the column layout. `examples/21-two-columns/` fills
+headings, the lot — obeys the column layout. `examples/021-two-columns/` fills
 two columns with `#lorem` so you can see the flow and the gap down the middle.
 
 That gap is the *gutter*, and it comes from the same `columns` machinery. For a
@@ -255,7 +255,7 @@ Written as a plain length — `first-line-indent: 1.2em` — Typst indents every
 paragraph *except* the first one after a heading, which is the usual
 typographic convention (you don't indent a paragraph that nothing precedes).
 The dictionary form with `all: true` overrides that and indents every paragraph,
-which some house styles prefer. `examples/22-paragraph-settings/` combines
+which some house styles prefer. `examples/022-paragraph-settings/` combines
 justification, tighter leading, and a first-line indent into the familiar
 book-page look.
 
@@ -304,7 +304,7 @@ a weak one does nothing rather than leaving a blank page behind. This matters
 when a break lives inside a rule that might fire right after another break; the
 weak version keeps you from stacking two and emptying a page. `#v` also has a
 `weak: true` form, for the same reason: weak space at the very top of a page
-collapses instead of pushing your text down. `examples/23-spacing-and-breaks/`
+collapses instead of pushing your text down. `examples/023-spacing-and-breaks/`
 shows `#v`, `#h(1fr)`, and both kinds of break side by side.
 
 > [!TIP]
@@ -341,7 +341,7 @@ Reading that from the inside out: some big, light-gray text, rotated thirty
 degrees, centered vertically and horizontally in the page box. Because it's the
 *background*, your actual document sits on top of it and stays readable.
 `foreground` is the mirror image — content drawn *over* the text — for the rarer
-case where you want the stamp to sit on top. `examples/24-page-background/`
+case where you want the stamp to sit on top. `examples/024-page-background/`
 combines a paper tint with a ghosted DRAFT watermark.
 
 > [!NOTE]

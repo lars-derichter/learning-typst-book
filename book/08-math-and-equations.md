@@ -43,7 +43,7 @@ $ a^2 + b^2 = c^2 $
 That single space is the whole switch. `$x$` is inline; `$ x $` is a display
 block. It looks like a typo the first time you see it, but it reads naturally
 once your fingers learn it: a little breathing room inside the dollars means a
-little breathing room on the page. Example `examples/38-inline-vs-block/` sets
+little breathing room on the page. Example `examples/038-inline-vs-block/` sets
 the very same equation both ways so you can see the two side by side.
 
 > [!NOTE]
@@ -77,7 +77,7 @@ circles — becomes the infinity sign ∞ (its long name, `infinity`, works too)
 There are hundreds more, all discoverable in the
 [symbol reference](https://typst.app/docs/reference/symbols/). Many reach a
 variant with a dot: `arrow.double` for ⇒, `in.not` for ∉, `eq.not` for ≠.
-Example `examples/39-symbols-and-scripts/` gathers a working set of them.
+Example `examples/039-symbols-and-scripts/` gathers a working set of them.
 
 > **Coming from LaTeX.** The *ideas* map over almost unchanged. Math still lives
 > between dollar signs, `^` is still superscript, `_` still subscript, and the
@@ -148,8 +148,8 @@ $sqrt(2)$, $sqrt(x^2 + y^2)$, $root(3, x)$, $root(n, x)$
 
 The radical stretches to cover its whole argument automatically — one of those
 small kindnesses you stop noticing until you go back to a tool that doesn't do
-it. Example `examples/40-fractions-and-roots/` collects fractions, the binomial,
-and both roots.
+it. Example `examples/040-fractions-and-roots/` collects fractions,
+the binomial, and both roots.
 
 ## Functions and operators
 
@@ -209,7 +209,7 @@ The clever part is that the *same source* behaves differently inline. Drop a sum
 into a sentence and Typst moves the bounds to the side to keep the line from
 growing tall: the series $sum_(n=0)^oo 1/2^n = 2$ sits politely on one line, its
 `n=0` and `∞` shrunk to script size beside the sign. Example
-`examples/41-sums-and-integrals/` shows both placements.
+`examples/041-sums-and-integrals/` shows both placements.
 
 > [!TIP]
 > Want a block-style stacked sum *inline* anyway, or side-set bounds in a block?
@@ -257,7 +257,7 @@ $ abs(x) = cases(
 
 The `"if"` in quotes is literal text, set upright — more on that shortly. All
 three functions, plus the custom delimiters, live in
-`examples/42-matrices-and-vectors/`.
+`examples/042-matrices-and-vectors/`.
 
 ## Lining equations up
 
@@ -288,7 +288,7 @@ $ 3 x + 6 &= 21 \
         x &= 5 $
 ```
 
-Example `examples/43-aligned-equations/` has both. You can use more than one `&`
+Example `examples/043-aligned-equations/` has both. Use more than one `&`
 per line to make several alignment columns (for a system of equations, say), but
 one is enough to cover the common case, and it's the one to learn first.
 
@@ -367,7 +367,7 @@ you shuffle the document. Add three equations above this one and it quietly
 becomes Equation 4, reference and all. The `eq:` part of the name is just a
 convention to keep equation labels distinct from labels on figures or headings;
 Typst doesn't require it, but your future self will thank you.
-Example `examples/44-numbered-equations/` turns numbering on, labels two
+Example `examples/044-numbered-equations/` turns numbering on, labels two
 equations, and references both.
 
 > [!NOTE]

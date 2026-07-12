@@ -31,7 +31,7 @@ contents, and sets it on the page at its natural size. It understands the
 formats you'd expect: PNG and JPG for photographs and screenshots, GIF, and SVG
 for vector art that stays crisp at any size.
 
-The file in `examples/25-basic-image/` is an SVG, and it's worth a look because
+The file in `examples/025-basic-image/` is an SVG, and it's worth a look because
 SVG is just text — a few lines of tags describing a rounded blue square, a white
 disc, and an orange triangle. You can open it in any editor, read it, and see it
 in a diff. That is a small superpower: an image asset you can actually inspect,
@@ -107,7 +107,7 @@ finger. The word "Figure" is the *supplement* — the label Typst puts before th
 number — and it, too, is automatic.
 
 The body of a figure doesn't have to be an image at all. It can be any content:
-a shape, a block of text, a table. `examples/26-figure-with-caption/` wraps a
+a shape, a block of text, a table. `examples/026-figure-with-caption/` wraps a
 plain drawn rectangle and a circle, purely to show that the caption and
 numbering machinery cares nothing for what's inside — it frames whatever you
 give it and counts.
@@ -155,7 +155,7 @@ Revenue climbed all year (@fig:revenue), then dipped in December.
 
 That `@fig:revenue` renders as "Figure 3" (or whatever number the figure ends up
 with), linked to the figure itself. Move the figure, add ten figures before it,
-reorder the lot — the reference follows. `examples/27-referencing-figures/` has
+reorder the lot — the reference follows. `examples/027-referencing-figures/` has
 two labelled figures and points at both from the surrounding prose, so you can
 watch the numbers and the text stay in lockstep.
 
@@ -212,7 +212,7 @@ you tell Typst what it is with `kind`, and give it a word to print with
 Every figure sharing a `kind` shares a counter. So a document can run "Figure 1,
 Figure 2" down one track, "Table 1, Table 2" down another, and "Diagram 1,
 Diagram 2" down a third, all at once, each numbered independently and each
-referenced by its own labels. `examples/29-figure-of-a-table-or-diagram/` puts a
+referenced by its labels. `examples/029-figure-of-a-table-or-diagram/` puts a
 table figure and two custom "Diagram" figures side by side so you can watch the
 three counters march in parallel.
 
@@ -242,7 +242,7 @@ sloppy. Use `"contain"` when you must see the whole image and can tolerate the
 margins. Reach for `"stretch"` almost never; distortion is rarely a good look,
 though it has its uses for deliberate effect.
 
-`examples/28-sizing-and-fit/` scales the logo with a relative `width: 60%` and
+`examples/028-sizing-and-fit/` scales the logo with a relative `width: 60%` and
 then drops the same image into three identical boxes, one per fit mode, so the
 difference is impossible to miss: one letterboxed, one cropped, one squashed.
 
@@ -354,15 +354,15 @@ SOLUTIONS (notes for the appendix author):
 6.3 - Two figures with <fig:one>/<fig:two>, referenced via @fig:one/@fig:two.
       After moving fig:two above fig:one, it becomes Figure 1 and the references
       renumber themselves. The whole point: references track the label, not a
-      hand-typed number. See examples/27-referencing-figures/.
+      hand-typed number. See examples/027-referencing-figures/.
 6.4 - #let b = box.with(width: 4cm, height: 2cm, stroke: 0.5pt); then
       b[#image("x.png", width:100%, height:100%, fit:"contain")] and likewise
       "cover" and "stretch". contain = whole image, letterboxed; cover = fills
-      box, crops overflow; stretch = fills box, distorts. Mirrors example 28.
+      box, crops overflow; stretch = fills box, distorts. Mirrors example 028.
 6.5 - Three figures: a drawn shape (default kind -> "Figure 1"), a table figure
       (auto kind table -> "Table 1"), and kind: "diagram", supplement: [Diagram]
       (-> "Diagram 1"). Each kind has its own counter, so all three read "1".
       Reference each with its own <fig:...>/<tbl:...>/<dia:...> label. Mirrors
-      example 29. Key insight: kind separates the counters; supplement is only
+      example 029. Key insight: kind separates the counters; supplement is only
       the printed word.
 -->
