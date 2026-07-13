@@ -143,6 +143,50 @@ highlight, the bordered callout, and the clipped frame. The rule of thumb:
 reach for a `box` when the thing belongs *in* a line, a `block` when it wants
 a line of its own.
 
+There is one thing a block does that an inline `box` never has to face: it can
+run into the bottom of a page. By default a block is *breakable* — if it doesn't
+fit in the space that's left, it splits, picking up again at the top of the next
+page. For a long quotation or a table that runs for pages, that's exactly right;
+you want the content to flow. For a callout, a figure, or a code listing you
+want kept in one piece, it's a small disaster: the box tears in two, its top on
+one page and its tail on the next.
+
+Forbid the split with `breakable: false`:
+
+```typ
+#block(fill: rgb("#eef4ff"), stroke: 1pt + rgb("#3b6fb0"),
+  radius: 6pt, inset: 10pt, breakable: false)[
+  A callout that would rather move than be torn in half.
+]
+```
+
+Now the block is indivisible: if it won't fit where it sits, the whole thing
+jumps to the next page rather than break across the boundary. This is exactly
+what the admonition boxes in Chapter 22 do, so a "Tip" never leaves its label
+stranded at the foot of one page and its advice at the head of the next. The one
+honest cost is the edge case: a block taller than a whole page has nowhere that
+fits to jump to, so an unbreakable one overflows the bottom. For short callouts
+that never comes up — but if a box might grow long, you may not want to commit
+to "never break."
+
+> [!TIP]
+> What if a box should *prefer* to stay whole yet break when it genuinely gets
+> too tall? There's no single switch for that, but `breakable` accepts any
+> boolean, so you can work one out. Measure the content first — the `measure`
+> and `layout` pair from Chapter 17 — and let its height decide:
+>
+> ```typ
+> #let keep-whole(body, break-past: 8cm) = layout(size => {
+>   let tall = measure(block(width: size.width, body)).height > break-past
+>   block(breakable: tall, inset: 10pt, stroke: 1pt + gray)[#body]
+> })
+> ```
+>
+> A short box stays in one piece; one taller than `break-past` is allowed to
+> split. The threshold is the box's *own* height, not the room left on the page
+> — Typst won't tell content how much space is below it — but "small boxes stay
+> whole, big ones may break" is usually the rule you actually wanted.
+
 ## Stacking
 
 `#stack` is the simplest way to line several things up along one axis. You
@@ -416,7 +460,8 @@ You can now overrule the automatic layout when you need to:
   version of a figure's placement, and the way to stamp a single page.
 - **Wrap content in a container**: an inline `#box` or a block-level `#block`,
   both with `fill`, `stroke`, `radius`, `inset`, `outset`, `width`/`height`,
-  and `clip`.
+  and `clip` — plus `breakable: false` on a block to keep it from tearing across
+  a page boundary.
 - **Line items up on one axis** with `#stack(dir:, spacing:, ...)`, the
   one-dimensional lighter sibling of `grid`.
 - **Nudge within the flow** using `#pad` for surrounding space and `#align`
@@ -449,9 +494,11 @@ inset a couple of millimetres from the edge with `dx`/`dy`. Fill the page with
 tag. Then move the tag to `bottom + center` and watch where it lands.
 
 21.2. Build a `#block` with a coloured fill, a coloured border, rounded
-corners, and 10pt of inset — a callout box. Then give it a fixed `height`
-shorter than its content and add `clip: true`. Describe, in one sentence, what
-`clip` did.
+corners, and 10pt of inset — a callout box. Give it a fixed `height` shorter
+than its content and add `clip: true`; describe, in one sentence, what `clip`
+did. Then drop the fixed height, fill the box with enough `#lorem` to run past
+the bottom of a page, and set `breakable: false`: recompile and say where the
+whole box lands, and what would happen instead if it were taller than a page.
 
 21.3. Recreate a single table-of-contents line by hand: the text "Chapter 1"
 on the left, "7" on the right, and a dotted leader stretching between them.
@@ -479,8 +526,12 @@ SOLUTIONS (notes for the appendix author):
        the foot, centred; body text still ignores it. See examples/108.
 21.2 - #block(fill: rgb("#eef4ff"), stroke: 1pt + blue, radius: 6pt,
        inset: 10pt)[#lorem(30)], then add height: 1.5cm, clip: true. clip cuts off
-       that overflows the fixed height at the block's edge instead of letting it
-       spill past. See examples/109.
+       what overflows the fixed height at the block's edge instead of letting it
+       spill past. See examples/109. Then, breakable part: drop height/clip, use
+       [#lorem(120)] so it crosses a page, add breakable: false — the whole box
+       moves to the next page intact instead of splitting. Risk if it's taller
+       than a page: nowhere to jump that fits, so it overflows the bottom edge
+       (breakable: false can't shrink it). That's the trade behind the rule.
 21.3 - Chapter 1 #box(width: 1fr, repeat[.]) 7  — the 1fr box absorbs the slack
        and repeat fills it with dots; lengthening "Chapter 1" to a long title
        shortens the dot run automatically. See examples/112.

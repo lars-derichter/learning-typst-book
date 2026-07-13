@@ -1515,6 +1515,21 @@ Without a fixed `height` the block grows to fit its text. Fix the height and the
 text overflows past the bottom edge; add `clip: true` and the overflow is cut
 off cleanly at the block's border instead of spilling out. See `examples/109-`.
 
+For the `breakable` part, drop the fixed height and fill the box with enough
+text to cross a page:
+
+```typ
+#block(
+  fill: rgb("#eef4ff"), stroke: 1pt + blue, radius: 6pt,
+  inset: 10pt, breakable: false,
+)[#lorem(120)]
+```
+
+With `breakable: false` the whole box moves to the next page rather than split
+across the boundary. The catch is the edge case: if the box were taller than a
+whole page, there is no page with room for it, so it overflows the bottom edge —
+`breakable: false` keeps a box intact but can't make it fit.
+
 **21.3** A dot leader that fills the slack on a line:
 
 ```typ
