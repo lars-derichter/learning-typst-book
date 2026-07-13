@@ -13,9 +13,10 @@ default: a stroke of punctuation that tells Typst "this part is a heading,"
 deliberately quiet — a hyphen here, an asterisk there — so that your source
 still reads like the thing it describes, not like a wall of tags.
 
-If you've written Markdown, a lot of this will feel like coming home, with the
-furniture moved slightly. Read the "Coming from Markdown" box near the end
-before you assume anything transfers unchanged; a few of the pieces are in
+If you've written [Markdown](29-appendix-e-markdown.md), a lot of this will feel
+like coming home, with the furniture moved slightly. Read the "Coming from
+Markdown" box near the end before you assume anything transfers unchanged; a
+few of the pieces are in
 different places, and one or two will trip you if you don't look.
 
 By the end of the chapter you'll be able to hand-write a structured,
@@ -81,9 +82,10 @@ after the equals signs matters — `=heading` with no space is just literal text
 
 That's the whole syntax. Notice what's missing: no numbers. Typst does not print
 "1.2.3" in front of your headings unless you ask it to, and asking is a one-line
-*set rule* — `#set heading(numbering: "1.")` — which we hold until Chapter 9,
-where set rules get the introduction they deserve. For now, write your headings
-as plain structure and let the numbering wait.
+*set rule* — `#set heading(numbering: "1.")` — which we hold until
+[Chapter 9](09-set-rules.md), where set rules get the introduction they
+deserve. For now, write your headings as plain structure and let the
+numbering wait.
 
 > **Coming from Markdown.** Yes, it's `=`, not `#`. In Typst the `#` is reserved
 > for something bigger (dropping into code — hold that thought), so headings
@@ -110,8 +112,9 @@ Under the hood, `_…_` is shorthand for a function called `emph` and `*…*` fo
 one called `strong`. You can call them the long way — `#emph[like this]` and
 `#strong[like this]` — and you'll occasionally want to when you're generating
 text from code rather than typing it by hand. That `#` is the doorway into
-Typst's programming language; Chapter 13 walks through it properly. For plain
-writing, the underscores and asterisks are all you need. Example
+Typst's programming language; [Chapter 13](13-from-markup-to-code.md) walks
+through it properly. For plain writing, the underscores and asterisks are all
+you need. Example
 `examples/007-emphasis-and-raw/` shows emphasis, nesting, and raw text together.
 
 > **Coming from Markdown.** Both delimiters are *single* here. Markdown makes
@@ -312,8 +315,8 @@ That's the whole idea in one bite. One catch worth naming now: pointing at a
 `#set heading(numbering: "1.")` line sits at the top of the example — without
 it, Typst stops and tells you it *cannot reference heading without numbering*.
 Labels on other things don't need it. References can also carry their own
-wording, and Chapter 11 gives labels and cross-references the full treatment;
-file the syntax away for now.
+wording, and [Chapter 11](11-references-and-cross-references.md) gives labels
+and cross-references the full treatment; file the syntax away for now.
 
 ## Two symbols you'll meet soon
 
@@ -321,8 +324,9 @@ While we're naming special characters, two more are worth flagging so they don't
 surprise you later.
 
 A dollar sign opens *math*: `$a^2 + b^2$` typesets an equation inline, and
-Typst's math is good enough to get its own chapter (Chapter 8). And the `#` you
-keep seeing drops out of markup and into *code* — the little programming
+Typst's math is good enough to get its own chapter
+([Chapter 8](08-math-and-equations.md)). And the `#` you keep seeing drops out
+of markup and into *code* — the little programming
 language under the surface, where `#link` and `#emph` and `#set` all come from.
 Chapter 13 opens that door deliberately. For now, just recognize the two
 symbols: `$` means math, `#` means code.

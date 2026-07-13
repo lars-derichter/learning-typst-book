@@ -150,8 +150,9 @@ centres the header, left-aligns the item names, and right-aligns every quantity
 and price so the euro amounts line up cleanly — three alignment rules that no
 per-column list could express, because the header row wants different treatment
 from the body. The `=>` makes an anonymous function; if it looks strange now,
-Chapter 14 gives functions the full introduction. For tables you only need the
-pattern: `(x, y) => something-that-depends-on-x-and-y`.
+[Chapter 14](14-functions-and-closures.md) gives functions the full
+introduction. For tables you only need the pattern:
+`(x, y) => something-that-depends-on-x-and-y`.
 
 ## Fills and zebra striping
 

@@ -418,8 +418,9 @@ larger roster.
 
 ### The payoff: data to table
 
-Now the move the whole chapter was pointing at. The `table` function (Chapter 7)
-wants a flat run of cells. `map` can turn each record into a row of cells, and
+Now the move the whole chapter was pointing at. The `table` function
+([Chapter 7](07-tables-and-grids.md)) wants a flat run of cells. `map` can turn
+each record into a row of cells, and
 the **spread operator** `..` (Chapter 14) unpacks that list of rows straight
 into the table's arguments:
 
@@ -455,7 +456,8 @@ One limit worth naming before you go. Everything here is computed from the data
 on *where the element lands in the finished document*: the page a heading falls
 on, the current section number, a running total that accumulates down the pages.
 Those can't be known while Typst is still deciding the layout, and they need a
-different mechanism — `context`, the subject of Chapter 17.
+different mechanism — `context`, the subject of
+[Chapter 17](17-context-state-counters.md).
 
 ## What you've got
 

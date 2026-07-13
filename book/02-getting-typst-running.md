@@ -316,15 +316,15 @@ Some body text goes here.
 
 The `title` and `author` never appear in the layout — they're metadata, written
 into the PDF itself. It's a small, professional touch that costs one line, and
-`#set` is a rule you'll meet properly in Chapter 9.
+`#set` is a rule you'll meet properly in [Chapter 9](09-set-rules.md).
 
 > [!TIP]
 > You don't always have to start from a blank file. `typst init` scaffolds a
 > whole project from a template — for instance,
 > `typst init @preview/charged-ieee` pulls a template from Typst Universe, the
 > package registry, and drops a ready-to-edit folder in front of you. We'll dig
-> into packages and templates in Chapters 19 and 20; file the command away for
-> now.
+> into packages and templates in Chapters [19](19-templates.md) and
+> [20](20-packages.md); file the command away for now.
 
 ## What you've got
 

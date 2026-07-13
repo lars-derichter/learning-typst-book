@@ -14,8 +14,8 @@ headers, the lot — packed into one function that you apply with a single line.
 Write it once. Apply it to a hundred documents. Change it in one place and all
 hundred follow.
 
-You've already met the mechanism, in miniature, at the very end of Chapter 10.
-This chapter grows it into the real thing.
+You've already met the mechanism, in miniature, at the very end of
+[Chapter 10](10-show-rules.md). This chapter grows it into the real thing.
 
 ## A template is a function
 

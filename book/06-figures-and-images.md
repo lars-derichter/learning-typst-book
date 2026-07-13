@@ -127,7 +127,8 @@ Tables usually want their caption on top. You move it with a set rule:
 #set figure.caption(position: top)
 ```
 
-Set rules are Chapter 9's whole topic, so don't worry about the mechanics yet.
+Set rules are [Chapter 9](09-set-rules.md)'s whole topic, so don't worry about
+the mechanics yet.
 The shape to notice is that the caption's position is a setting you change once,
 in one place, rather than a decision you re-make at every figure.
 

@@ -242,8 +242,8 @@ because it trips people up.
 > the example updates the state and *then* breaks the page: the change lands at
 > the very end of page one, so page two's header, drawn at the top, already has
 > the new value. Update-then-break is the reliable order. (For a header that
-> must track sections starting mid-page, you'll want `query`, a Chapter 21
-> tool.)
+> must track sections starting mid-page, you'll want `query`, a
+> [Chapter 21](21-advanced-layout.md) tool.)
 
 ### When it won't settle
 

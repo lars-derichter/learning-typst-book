@@ -39,7 +39,8 @@ in both places.
 ## Typst Universe
 
 <https://typst.app/universe> is the package and template registry you met in
-Chapter 20 — the searchable catalogue of community drawing kits, table helpers,
+[Chapter 20](20-packages.md) — the searchable catalogue of community drawing
+kits, table helpers,
 slide systems, and ready-made document templates. When you catch yourself about
 to build something fiddly from primitives, look here first; the odds are decent
 that a stranger already built it and pinned a version for you.

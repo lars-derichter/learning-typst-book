@@ -8,9 +8,10 @@ drawing library that someone spent two years perfecting.
 
 That someone is a stranger on the internet, and their work is one import away.
 
-In Chapter 18 you learned to pull a function out of your own file with
-`#import "helpers.typ": callout`. In Chapter 19 you wrapped a whole look into a
-template. This chapter is the same `#import`, reaching further: past your own
+In [Chapter 18](18-your-own-functions.md) you learned to pull a function out of
+your own file with `#import "helpers.typ": callout`. In
+[Chapter 19](19-templates.md) you wrapped a whole look into a template. This
+chapter is the same `#import`, reaching further: past your own
 folder, past your own machine, all the way to a community registry of ready-made
 Typst code. You'll learn to use packages, and — because your templates from the
 last chapter deserve an audience — to publish your own.

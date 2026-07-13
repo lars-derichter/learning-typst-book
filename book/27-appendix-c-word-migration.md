@@ -31,14 +31,15 @@ Those rules come in two kinds, and together they are the heart of the whole
 system:
 
 - A **set rule** adjusts an element's built-in settings — the font of all text,
-  the numbering of all headings, the margins of every page (Chapter 9).
+  the numbering of all headings, the margins of every page
+  ([Chapter 9](09-set-rules.md)).
 - A **show rule** rebuilds an element's whole appearance, or applies a set rule
   to only *some* elements. This is the workshop where the fancy looks get built
-  (Chapter 10).
+  ([Chapter 10](10-show-rules.md)).
 
 Word's Styles gallery is the closest thing it has to this idea; a Typst
-template (Chapter 19) is the same instinct taken all the way, packing every rule
-for a document's look into one reusable function.
+template ([Chapter 19](19-templates.md)) is the same instinct taken all the
+way, packing every rule for a document's look into one reusable function.
 
 Here is the shift in miniature — structure labeled, appearance decided once:
 

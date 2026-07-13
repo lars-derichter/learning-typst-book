@@ -334,7 +334,8 @@ document once, let the machine elaborate it.
 
 > [!NOTE]
 > The `#sessions.len()` at the end asks the array how many elements it has — a
-> taste of the collection methods that are Chapter 16's whole subject. Arrays,
+> taste of the collection methods that are
+> [Chapter 16](16-arrays-dictionaries-strings.md)'s whole subject. Arrays,
 > dictionaries, and strings have a deep bag of tricks (mapping, filtering,
 > sorting) that make "data in, document out" even tidier than a hand-written
 > loop. This chapter gave the loops; the next gives you richer things to loop

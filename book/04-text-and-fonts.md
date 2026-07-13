@@ -35,8 +35,9 @@ A set rule changes a default for everything after it. Put that line at the
 top of your file and the entire document switches to twelve-point New Computer
 Modern; put it halfway down and only the second half changes. Set rules are one
 of the two big ideas that turn Typst from a markup language into a styling
-engine, and Chapter 9 gives them the full treatment. For now the shape is
-all you need: `#set text(...)` means "from here on," `#text(...)[...]` means
+engine, and [Chapter 9](09-set-rules.md) gives them the full treatment. For
+now the shape is all you need: `#set text(...)` means "from here on,"
+`#text(...)[...]` means
 "just this."
 
 Almost everything in the rest of this chapter is an argument to that one

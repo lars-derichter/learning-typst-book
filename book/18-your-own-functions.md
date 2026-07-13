@@ -291,8 +291,9 @@ all of `report`'s rules take hold across the whole document. One line at the top
 and the document is styled.
 
 This is the seam where a library of components becomes a *template*, and it's
-exactly where Chapter 19 picks up. A template is this same `#show: function`
-move, grown up: one function that captures an entire design and applies it to
+exactly where [Chapter 19](19-templates.md) picks up. A template is this same
+`#show: function` move, grown up: one function that captures an entire design
+and applies it to
 any content you feed it. You've now built the small version by hand.
 
 > [!IMPORTANT]

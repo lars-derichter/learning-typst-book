@@ -8,9 +8,10 @@ and every one of those promises eventually gets broken, usually at the worst
 moment — the reviewer's copy, the printed proof.
 
 Typst does not make you type the numbers. You already saw the trick twice: in
-Chapter 6 you labelled a figure and pointed at it with `@fig:name`, and in
-Chapter 8 you did the same with an equation. This chapter is where that becomes
-a full toolkit. You'll label *anything* worth pointing at — headings, figures,
+[Chapter 6](06-figures-and-images.md) you labelled a figure and pointed at it
+with `@fig:name`, and in [Chapter 8](08-math-and-equations.md) you did the same
+with an equation. This chapter is where that becomes a full toolkit. You'll
+label *anything* worth pointing at — headings, figures,
 tables, equations — reference it from anywhere, bend the wording to taste, and
 then let Typst build a table of contents and a list of figures from the same
 information, all of it correct by construction and all of it in one compile.
@@ -170,8 +171,8 @@ reference, and the one-off override, side by side.
 
 Setting the supplement changes the *word*. Sometimes you want to change the
 whole *look* — colour every reference, box it, drop the supplement and keep only
-the number. For that you write a show rule on `ref`, exactly the way Chapter 10
-showed you show rules on headings:
+the number. For that you write a show rule on `ref`, exactly the way
+[Chapter 10](10-show-rules.md) showed you show rules on headings:
 
 ```typ
 #show ref: it => {

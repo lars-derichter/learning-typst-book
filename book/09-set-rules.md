@@ -138,8 +138,8 @@ proper treatment. Nothing below is new — it's the same functions you already
 know, seen now through the set-rule lens.
 
 **`#set text(...)`** — the typeface, size, weight, colour, language, and every
-other property of type (Chapter 4). The workhorse. A document almost always
-opens with one.
+other property of type ([Chapter 4](04-text-and-fonts.md)). The workhorse. A
+document almost always opens with one.
 
 ```typ
 #set text(font: "New Computer Modern", size: 11pt, lang: "en")

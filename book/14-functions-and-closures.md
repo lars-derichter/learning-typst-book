@@ -25,8 +25,8 @@ That's a function.
 
 ## Defining a function
 
-You already know the keyword. In Chapter 13 you used `#let` to give a name to a
-value:
+You already know the keyword. In [Chapter 13](13-from-markup-to-code.md) you
+used `#let` to give a name to a value:
 
 ```typ
 #let pi = 3.14159

@@ -172,8 +172,9 @@ Two things are new there. `counter(page)` is the running tally of pages;
 is Typst's way of saying "this value depends on *where* we are in the document"
 — the page number is different on every page, so Typst can only work it out once
 it knows which page it's laying out. You met `#context` in passing before; it
-gets its proper introduction, along with counters and state, in Chapter 17. For
-now, treat `context [ … #counter(page).display() … ]` as the incantation that
+gets its proper introduction, along with counters and state, in
+[Chapter 17](17-context-state-counters.md). For now, treat
+`context [ … #counter(page).display() … ]` as the incantation that
 puts the live page number into content you control, and move on.
 
 The short version: set `numbering` when you just want a page number in the usual

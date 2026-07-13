@@ -282,8 +282,9 @@ headings — a complete change of clothes from one line.
 
 That's a template in miniature. Real ones do far more — title pages, headers,
 multi-argument configuration — but the engine is exactly this: a function that
-wraps the document, invoked by a selector-less show rule. Chapter 19 builds
-one properly. For now, note the shape, because you'll write `#show: something`
+wraps the document, invoked by a selector-less show rule.
+[Chapter 19](19-templates.md) builds one properly. For now, note the shape,
+because you'll write `#show: something`
 at the top of nearly every serious document you make.
 
 ## Two things that bite

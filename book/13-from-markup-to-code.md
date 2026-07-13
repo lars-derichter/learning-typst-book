@@ -196,7 +196,8 @@ Read down that list — it is the working vocabulary of the whole language:
   in code, text must be quoted, because unquoted words are names. This is
   the opposite of markup, where text is just text.
 - **Boolean** (`bool`) — one of exactly two values, `true` or `false`.
-  The stuff of yes/no decisions, and of every `if` condition (Chapter 15).
+  The stuff of yes/no decisions, and of every `if` condition
+  ([Chapter 15](15-control-flow.md)).
 - **Length** — a measurement: `12pt`, `2cm`, `1em`. These carry a unit, so
   they know that `1em` scales with the font while `12pt` does not.
 - **Ratio** — a percentage: `50%`, `100%`. A fraction of something,
@@ -204,7 +205,8 @@ Read down that list — it is the working vocabulary of the whole language:
 - **Content** — a piece of typeset material: the result of `[bold]`, a
   heading, an image, a whole chapter. Every content block `[...]` is a
   value of this type, which is exactly why you can bind one to a name.
-- **Array** — an ordered list of values: `(1, 2, 3)`. Chapter 16.
+- **Array** — an ordered list of values: `(1, 2, 3)`.
+  [Chapter 16](16-arrays-dictionaries-strings.md).
 - **Dictionary** — values stored under named keys: `(name: "Ada")`. Also
   Chapter 16.
 
@@ -279,7 +281,7 @@ into more content:
 That last one is quietly powerful. Because content is a value and `+`
 joins it, you can build up a document by adding pieces together — a fact
 that pays off the moment you start writing your own functions in
-Chapter 14.
+[Chapter 14](14-functions-and-closures.md).
 
 ## Two kinds of block
 

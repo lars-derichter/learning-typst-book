@@ -37,7 +37,8 @@ Hello.
 
 The title block, the class, and the packages are gone — replaced by a couple of
 `#set` rules for the things you actually want to change, and by a *template*
-(Chapter 19) when you want a reusable look with a real title block.
+([Chapter 19](19-templates.md)) when you want a reusable look with a real title
+block.
 
 | LaTeX | Typst | Notes |
 |---|---|---|
@@ -84,7 +85,8 @@ Typst does the same smart substitutions in markup:
 | `\rule`, `\hrule` | `#line(length: 100%)` | |
 | `\noindent` / indent | `#set par(first-line-indent: …)` | Controlled globally by set rule |
 
-Text and fonts are Chapter 4; page-level layout is Chapter 5.
+Text and fonts are [Chapter 4](04-text-and-fonts.md); page-level layout is
+[Chapter 5](05-pages-and-layout.md).
 
 ## Sectioning and cross-references
 
@@ -105,8 +107,10 @@ numbered by default**; turn numbering on with a set rule.
 | `\tableofcontents` | `#outline()` | |
 | `\listoffigures` | `#outline(target: figure.where(kind: image))` | |
 
-References and cross-references are Chapter 11; headings and numbering patterns
-are Chapters 3 and 9.
+References and cross-references are
+[Chapter 11](11-references-and-cross-references.md); headings and numbering
+patterns are Chapters [3](03-markup-content-layer.md) and
+[9](09-set-rules.md).
 
 ## Lists
 

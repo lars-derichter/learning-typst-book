@@ -57,8 +57,9 @@ The word at the top of each entry — `sweller1988`, `mcluhan1964` — is the
 That key is how you'll refer to the source from your document.
 
 Now the document. You cite with an `@` followed by a key, exactly the way you
-referenced a figure or an equation in Chapter 11 — the same little symbol, doing
-double duty. Then one `#bibliography` call renders the list:
+referenced a figure or an equation in
+[Chapter 11](11-references-and-cross-references.md) — the same little symbol,
+doing double duty. Then one `#bibliography` call renders the list:
 
 ```typ
 = A first citation

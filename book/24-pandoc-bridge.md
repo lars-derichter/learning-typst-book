@@ -65,7 +65,8 @@ repository's `scripts/build-book.sh`. It does exactly three things:
 
 1. **Convert** every chapter's Markdown into one big Typst *body* with Pandoc.
 2. **Assemble** the book by putting a short *head* — one that imports and
-   applies the Chapter 22 book template — in front of that body.
+   applies the [Chapter 22](22-designing-a-book-template.md) book template — in
+   front of that body.
 3. **Compile** the combined file to a PDF with Typst.
 
 In shell, stripped to its bones:

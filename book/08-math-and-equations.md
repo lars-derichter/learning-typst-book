@@ -348,8 +348,9 @@ block equation gets a number on the right margin:
 
 The `"(1)"` is a numbering *pattern*: the digit `1` is the counter and the
 parentheses are literal, so you get (1), (2), (3). (The same pattern language
-runs headings and lists; Chapter 9 gives it the full treatment.) Inline math is
-left alone — only display blocks are numbered — so your prose doesn't sprout
+runs headings and lists; [Chapter 9](09-set-rules.md) gives it the full
+treatment.) Inline math is left alone — only display blocks are numbered — so
+your prose doesn't sprout
 numbers mid-sentence.
 
 A number is only useful if you can point at it. Pin a label on an equation by

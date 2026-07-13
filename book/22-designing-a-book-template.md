@@ -9,8 +9,9 @@ numbers that agree with the contents, an index at the back — so that the three
 files stop being three documents and become Chapter 1, Chapter 2, and Chapter 3
 of one.
 
-That wrapper is a template. You built a small one in Chapter 19: a function that
-takes the document `body`, dresses it in set and show rules, and hands it back,
+That wrapper is a template. You built a small one in
+[Chapter 19](19-templates.md): a function that takes the document `body`,
+dresses it in set and show rules, and hands it back,
 applied with a single `#show: article.with(...)`. Everything in this chapter is
 that same function, grown until it can typeset a book — this book, in fact. We
 are going to design a real, reusable, O'Reilly-style book template, walk through

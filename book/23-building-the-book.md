@@ -1,7 +1,8 @@
 # Building the book
 
-The template is done. Chapter 22 spent its whole length building one: a
-`book()` function that draws a title page and a table of contents, a `part()`
+The template is done. [Chapter 22](22-designing-a-book-template.md) spent its
+whole length building one: a `book()` function that draws a title page and a
+table of contents, a `part()`
 divider, running heads that never lie, admonition boxes, themed code, a
 generated index — the entire look of a book, decided once and bottled up in a
 folder called `template/`. It compiles to a handsome eleven-page sampler.

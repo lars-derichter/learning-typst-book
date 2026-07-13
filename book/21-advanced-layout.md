@@ -21,8 +21,9 @@ them off.
 
 ## Placing things exactly
 
-You met `#place` by name in Chapter 6, as the lower-level cousin of a floating
-figure. Here's what it actually does: it lifts a piece of content clean out of
+You met `#place` by name in [Chapter 6](06-figures-and-images.md), as the
+lower-level cousin of a floating figure. Here's what it actually does: it lifts
+a piece of content clean out of
 the text flow and pins it to a position on the page.
 
 ```typ

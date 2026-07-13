@@ -167,18 +167,19 @@ cases well (Chapter 20).
 
 ### Versus Markdown
 
-Markdown and Typst look like cousins, and their basic markup really is similar.
-But Markdown was designed to be converted *into* something else — usually HTML —
-and it deliberately stops at simple structure. It has no opinion about page
-size, no real story for fine typography, no standard for typesetting an
-equation, no way to compute part of your document. It's a lovely notation for
-content and nothing more, by design.
+[Markdown](29-appendix-e-markdown.md) and Typst look like cousins, and their
+basic markup really is similar. But Markdown was designed to be converted
+*into* something else — usually HTML — and it deliberately stops at simple
+structure. It has no opinion about page size, no real story for fine
+typography, no standard for typesetting an equation, no way to compute part of
+your document. It's a lovely notation for content and nothing more, by design.
 
 Typst is a Markdown-like *input* wired to a full typesetting engine and a
 programming language *behind* it. You get the readability of Markdown and the
 power of LaTeX in one place. And the two worlds aren't even enemies: in
-Chapter 24 we build a pipeline that converts Markdown *to* Typst, which is
-exactly how this book turns its own Markdown chapters into a printed PDF.
+[Chapter 24](24-pandoc-bridge.md) we build a pipeline that converts Markdown
+*to* Typst, which is exactly how this book turns its own Markdown chapters into
+a printed PDF.
 
 ### Versus InDesign and friends
 
@@ -195,11 +196,16 @@ By the time you reach the last page, you'll be able to:
 
 - Write essays, reports, and letters that look professionally typeset, from
   plain text, in minutes.
-- Typeset serious mathematics without tears (Chapter 8).
-- Manage citations and produce a correct APA bibliography (Chapter 12).
-- Build tables that would make a spreadsheet jealous (Chapter 7).
-- Write your own functions to automate repetitive layout (Chapters 14 and 18).
-- Package your styles into a reusable template and share it (Chapters 19, 20).
+- Typeset serious mathematics without tears
+  ([Chapter 8](08-math-and-equations.md)).
+- Manage citations and produce a correct APA bibliography
+  ([Chapter 12](12-citations-and-bibliographies.md)).
+- Build tables that would make a spreadsheet jealous
+  ([Chapter 7](07-tables-and-grids.md)).
+- Write your own functions to automate repetitive layout (Chapters
+  [14](14-functions-and-closures.md) and [18](18-your-own-functions.md)).
+- Package your styles into a reusable template and share it (Chapters
+  [19](19-templates.md), [20](20-packages.md)).
 - Assemble a full book — chapters, table of contents, index, the lot — and
   typeset it from Markdown (Part VI).
 
