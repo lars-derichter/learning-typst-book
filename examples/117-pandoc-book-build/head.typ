@@ -12,6 +12,7 @@
 
 #import "/examples/115-oreilly-book-template/template/book.typ": book
 #import "/examples/115-oreilly-book-template/template/admonitions.typ": note, tip, important, warning, caution
+#import "/examples/115-oreilly-book-template/template/previews.typ": preview, keep
 #import "/examples/117-pandoc-book-build/cover.typ": cover
 
 // Apply the template. The build-specific choices are the book's metadata, the

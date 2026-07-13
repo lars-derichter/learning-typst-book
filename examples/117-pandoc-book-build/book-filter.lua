@@ -150,3 +150,73 @@ function Header(el)
   end
   return nil
 end
+
+-- === Code listings: keep the intro with the code, and show the output ======
+-- The book teaches by example. A code listing is almost always introduced by a
+-- sentence ending in a colon ("... start to finish (`examples/030-basic-table/`):"),
+-- and every example ships a small render (out.png). This pass, run over the
+-- top-level block stream after the element rewrites above:
+--
+--   * wraps a colon-intro paragraph and its listing in `#keep[…]` so the pair is
+--     sticky and never strands the intro (and its heading) at a page foot; and
+--   * when the intro names an `examples/NNN-slug/` folder and the listing is
+--     Typst, drops that example's render in beneath the code with `#preview(…)`.
+--
+-- Both `keep` and `preview` come from the template (previews.typ), imported in
+-- head.typ. Some examples have no meaningful still render, so they never preview:
+local preview_denylist = {
+  ["117-pandoc-book-build"] = true, -- its out.png is the book's own title page
+}
+
+-- The example folder named in an intro, e.g. "030-basic-table".
+local function example_slug(block)
+  return pandoc.utils.stringify(block):match("examples/(%d%d%d%-[%w%-]+)")
+end
+
+-- A paragraph that ends in a colon is introducing whatever block follows it.
+local function is_code_intro(block)
+  return block.t == "Para"
+    and pandoc.utils.stringify(block):match(":%s*$") ~= nil
+end
+
+-- Is this a Typst listing (so its example's render is what the code produces)?
+local function is_typst_code(block)
+  if block.t ~= "CodeBlock" then return false end
+  local lang = block.classes[1]
+  return lang == "typ" or lang == "typst"
+end
+
+function Pandoc(doc)
+  local blocks = doc.blocks
+  local out = {}
+  local i = 1
+  while i <= #blocks do
+    local here = blocks[i]
+    local nxt = blocks[i + 1]
+
+    if nxt and nxt.t == "CodeBlock" and is_code_intro(here) then
+      -- Glue the intro line to its listing.
+      table.insert(out, pandoc.RawBlock("typst", "#keep["))
+      table.insert(out, here)
+      table.insert(out, pandoc.RawBlock("typst", "]"))
+
+      local slug = example_slug(here)
+      if slug and is_typst_code(nxt) and not preview_denylist[slug] then
+        -- Keep the listing with its render, then show the render.
+        table.insert(out, pandoc.RawBlock("typst", "#keep["))
+        table.insert(out, nxt)
+        table.insert(out, pandoc.RawBlock("typst", "]"))
+        table.insert(out, pandoc.RawBlock(
+          "typst", '#preview("/examples/' .. slug .. '/out.png")'))
+      else
+        table.insert(out, nxt)
+      end
+      i = i + 2
+    else
+      table.insert(out, here)
+      i = i + 1
+    end
+  end
+  doc.blocks = out
+  return doc
+end
