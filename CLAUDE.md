@@ -14,7 +14,7 @@ brief, the plan, the style guide, the workflow — is in
 ## Repository layout
 
 - **`book/`** — the book text, one file per chapter: `00-preface.md`, `01-`…
-  `24-` (the numbered chapters, six Parts), `25-`…`29-` (Appendices A–E). This
+  `24-` (the numbered chapters, six Parts), `25-`…`31-` (Appendices A–G). This
   is the source of truth for the prose.
 - **`examples/`** — 117 self-contained, runnable Typst projects, each in
   `NNN-slug/` with a `main.typ`, a short `README.md`, and committed renders
