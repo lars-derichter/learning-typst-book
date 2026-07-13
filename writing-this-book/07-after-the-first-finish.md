@@ -188,6 +188,40 @@ itself. That is the pattern this whole file keeps circling back to — fix the
 thing, then make sure the book says out loud what fixing it taught you, so the
 reader inherits the cure and not just the bug.
 
+## The book assumed a format it never taught
+
+The book teaches Typst from nothing — every function, every gotcha, no prior
+knowledge presumed. But it is *written* in Markdown, and its whole
+self-typesetting trick reads Markdown in: every chapter file, every admonition
+box, every exercise list is `.md`. And yet nowhere did the book teach Markdown.
+It simply assumed you arrived already fluent. For a *Learning* book — aimed in
+part at people new to the whole business of writing in plain text — that was a
+quiet gap: it taught its subject exhaustively and leaned, unspoken, on a second
+language it never named.
+
+So Appendix E became a short Markdown primer: the everyday syntax with worked
+examples, a deliberate focus on GitHub Flavored Markdown (the dialect the book
+and its pipeline actually use, alerts and tables included), a one-screen
+reference table, and a few links out for going deeper. It closes by handing the
+reader on to Chapter 24 and the Pandoc appendix, where that same Markdown is
+turned into the PDF.
+
+Slotting it in forced a smaller, second decision. The back matter had grown to
+six appendices in the order they happened to get written, not the order a reader
+would want them. A primer on Markdown, a reference for the Pandoc pipeline that
+*consumes* Markdown, and a list of where to go next form an obvious arc —
+learn the format, drive the tool, then leave for the wider world. So the
+resources appendix, which had sat at E, moved to the end as G; Pandoc kept F;
+and the primer took E. "Where to go next" is, after all, the one appendix that
+has any business being last.
+
+The lesson rhymes with the rest of this file, wearing yet another costume: the
+strongest addition again came from noticing a mismatch between what the book
+*taught* and what it *assumed* — visible only once you stop reading the book
+as its author and start reading it as someone who has never seen a hash-mark
+heading before. The fix needed no new machinery. It closed a gap that had been
+sitting there, unremarked, the whole time.
+
 ## The real lesson
 
 A book, like a program, is never finished, only shipped. What lets it keep
