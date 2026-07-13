@@ -1,4 +1,4 @@
-# Appendix E · Where to go next
+# Appendix G · Where to go next
 
 A book has to stop somewhere. Typst doesn't. While you were reading, someone
 shipped a new package, someone else filed a bug that will be fixed by Friday,
