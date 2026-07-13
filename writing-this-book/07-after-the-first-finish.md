@@ -222,6 +222,48 @@ as its author and start reading it as someone who has never seen a hash-mark
 heading before. The fix needed no new machinery. It closed a gap that had been
 sitting there, unremarked, the whole time.
 
+## The book showed the code but hid the result
+
+Reading the finished PDF cover to cover — the PDF, not the source — turned up
+three things at once, each the kind you only notice once you stop being the
+author and start being the reader.
+
+The loudest: a book about *typesetting* that never showed you what its code
+typeset. Every one of the examples ships a small render (`out.png`), built and
+committed by the example pipeline, and the book set the code beside a careful
+description of the output — but never the output itself. A reader had to take
+the result on faith or go compile it. So the whole-book filter learned a new
+trick. When a listing is introduced the way the book already introduces them — a
+sentence ending in a colon that names an `examples/NNN-slug/` folder — the
+filter now drops that example's render in right below the code, framed and
+labelled "Output." Not a numbered figure (a hundred of those would wreck the
+figure count and the list of figures), just the result standing where the result
+belongs. Thirty-five listings gained their picture, and the book grew by sixteen
+pages and got much easier to learn from.
+
+The same read surfaced a quieter fault: section headings sitting near the foot of
+a page while the example they introduced began overleaf. Typst keeps a heading
+with its first line by default, so this was never a bare orphan — it was the
+*intro line* coming unglued from its code. The fix rhymes with Chapter 23's own
+advice about stickiness: the filter now wraps a colon-introduction and its
+listing (and, where there is one, its render) in a sticky block, so heading,
+intro, code, and output travel as one. The book already *taught* this; now the
+book that teaches it also *does* it.
+
+The third was the cheapest and had been in plain sight. The pipeline had long
+since made cross-chapter links work — a `[text](09-set-rules.md)` becomes a real
+jump inside the PDF — but the prose almost never used them: hundreds of flat
+"Chapter N" mentions, a bare two of them linked, and Markdown named a dozen times
+in the opening chapters without once pointing at the Markdown primer that is
+Appendix E. So the whole book got a restrained first-mention pass, chapter by
+chapter and into the appendices — the first time a chapter names a concept
+treated fully elsewhere, that mention now links there. And because a link nobody can see is only half a link, the template
+finally styles cross-references: the accent colour, and only for jumps to a
+*label*, so the table of contents and external URLs keep their own look.
+
+Three fixes, one source — reading the artifact instead of the source, and writing
+down what the gap between *intended* and *printed* revealed.
+
 ## The real lesson
 
 A book, like a program, is never finished, only shipped. What lets it keep

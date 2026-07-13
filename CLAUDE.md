@@ -94,18 +94,25 @@ byte-identical file (no spurious diffs).
   PDF is automatic.
 - **Change the book's look:** edit the files under
   `examples/115-oreilly-book-template/template/` — `theme.typ` for
-  colours/fonts/sizes, `book.typ` for layout. The whole-book PDF uses this same
-  template (via `examples/117-…/head.typ`), so a design change flows to both the
-  sampler and the full book.
+  colours/fonts/sizes, `book.typ` for layout (including the `show link` rule that
+  tints cross-references — links whose destination is a label — in the accent
+  colour), and `previews.typ` for the example-output preview (`preview()`) and the
+  `keep()` stickiness helper. The whole-book PDF uses this same template (via
+  `examples/117-…/head.typ`), so a design change flows to both the sampler and the
+  full book.
 - **Change the Markdown→PDF pipeline:** it lives in
   `examples/117-pandoc-book-build/`. `build.sh` (self-contained) and
   `scripts/build-book.sh` run the same steps: convert each `book/*.md` with
   Pandoc + `book-filter.lua`, prepend `head.typ`, then compile. The filter
   handles alerts→admonitions, Typst-math passthrough, thematic breaks, dropping
   the SOLUTIONS comments, unnumbering front/back matter, and rewriting links
-  (cross-chapter → internal PDF jumps, `examples/` → GitHub URLs). The build
-  runs the filter once per file, passing `CHAPTER_NAME`, so each chapter heading
-  gets a label its cross-chapter links can jump to.
+  (cross-chapter → internal PDF jumps, `examples/` → GitHub URLs). In a final
+  block-level pass it also drops an example's committed render (`out.png`) below
+  the listing that a colon-intro names (`(`examples/NNN-slug/`):`) as a
+  `#preview(...)`, and wraps a code-intro line with its listing (and that preview)
+  in `#keep[…]` so a heading, its intro, its code, and its output stay on one
+  page. The build runs the filter once per file, passing `CHAPTER_NAME`, so each
+  chapter heading gets a label its cross-chapter links can jump to.
 
 ## Typst 0.15 gotchas (learned the hard way)
 
