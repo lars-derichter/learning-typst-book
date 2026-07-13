@@ -122,6 +122,13 @@
   show heading.where(level: 2): set text(font: font-head, fill: accent, size: 12.5pt)
   show heading.where(level: 3): set text(font: font-head, fill: ink, size: 10.5pt)
 
+  // Cross-references — a link whose destination is a label (a jump to another
+  // chapter or appendix) — take the accent colour so a reader can see they lead
+  // somewhere. Links to a `location` (the table of contents), external URLs, and
+  // the code-span links to example folders all have a non-label destination and
+  // keep their own styling, so only in-text cross-references are tinted.
+  show link: it => if type(it.dest) == label { text(fill: accent, it) } else { it }
+
   // Captions a touch smaller and muted.
   show figure.caption: set text(size: size-small, fill: muted)
 
