@@ -168,6 +168,26 @@ links and the missing contents entries, wearing a third costume: the source can
 be flawless and the output still wrong, and there is no substitute for looking
 at what came out.
 
+There is a second half to this one, and it is the more interesting half. Fixing
+the template fixed the *book*, but it did nothing for what the book *taught* —
+because it taught nothing here at all. `breakable`, the property that caused the
+tear and then mended it, appeared nowhere a reader would look; it lived inside
+the admonition function, working in silence. Yet a reader meets the same wall
+the first time a figure, a long code listing, or a callout of their own splits
+across a page. The cure existed only as a private patch.
+
+So it went into the open, in Chapter 21, where `#box` and `#block` are first
+introduced: the default (a block breaks), the fix (`breakable: false`), the
+honest edge case (an unbreakable box taller than a page overflows instead of
+moving), and — in a Tip, answering a question Lars raised while reviewing the
+fix — the harder case of a box that should *prefer* to stay whole but break once
+it grows genuinely long, which you get by measuring the content and computing the
+boolean yourself. The Tip that explains it is, fittingly, an unbreakable box that
+hops to the next page to keep itself in one piece: the feature demonstrating
+itself. That is the pattern this whole file keeps circling back to — fix the
+thing, then make sure the book says out loud what fixing it taught you, so the
+reader inherits the cure and not just the bug.
+
 ## The real lesson
 
 A book, like a program, is never finished, only shipped. What lets it keep
