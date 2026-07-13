@@ -118,8 +118,9 @@ chapter builds on the last and ends with exercises (solutions in
 - [B. LaTeX → Typst migration map](book/26-appendix-b-latex-migration.md)
 - [C. Word / Google Docs → Typst migration map](book/27-appendix-c-word-migration.md)
 - [D. Quick-reference cheat sheet](book/28-appendix-d-cheat-sheet.md)
-- [E. Resources and where to go next](book/29-appendix-e-resources.md)
+- [E. A Markdown primer](book/29-appendix-e-markdown.md)
 - [F. Pandoc, in practice](book/30-appendix-f-pandoc.md)
+- [G. Resources and where to go next](book/31-appendix-g-resources.md)
 
 ## Running the examples
 

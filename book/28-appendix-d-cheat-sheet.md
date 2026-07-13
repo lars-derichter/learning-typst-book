@@ -364,4 +364,4 @@ typst --version
 ```
 
 For further reading — the official docs, community packages, and where to go
-next — see [Appendix E](29-appendix-e-resources.md).
+next — see [Appendix G](31-appendix-g-resources.md).

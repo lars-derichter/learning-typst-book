@@ -35,7 +35,8 @@ writer, so you shape the conversion at the structural level instead of hacking
 at text. Hold onto that picture; the filters section leans on it entirely.
 
 For a Typst user, a handful of the formats matter. On the way **in**: `gfm`
-(GitHub-flavored Markdown, this book's source dialect), `commonmark`, Pandoc's
+(GitHub-flavored Markdown, this book's source dialect — new to it?
+[Appendix E](29-appendix-e-markdown.md) is a short primer), `commonmark`, Pandoc's
 own extended `markdown`, `latex`, `html`, `docx`, and `epub`. On the way
 **out**: `typst`, obviously, but also `latex`, `html`, `docx`, and `epub` when
 you need to send the same content somewhere Typst doesn't reach. The rest of

@@ -3,7 +3,9 @@
 Here is a confession about the book you are reading. Its chapters are not
 written in Typst. Every one of them — this one included — is a plain Markdown
 file, the same `.md` you'd write for a README or a GitHub wiki. You've been
-reading Typst's output all along, but the *source* is Markdown.
+reading Typst's output all along, but the *source* is Markdown. (If Markdown
+itself is new to you, [Appendix E](29-appendix-e-markdown.md) is a quick
+primer.)
 
 That should sound like a contradiction. This is a book about Typst; why isn't it
 written in Typst? Because Markdown is a wonderful format to *write* in — light,
