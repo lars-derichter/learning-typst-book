@@ -338,7 +338,7 @@ point: a reference tracks its label, not a number you typed. See
 
 `contain` fits the whole image inside the box and letterboxes the spare space;
 `cover` fills the box and crops the overflow; `stretch` fills the box by
-distorting the image. Mirrors `examples/028-image-fit/`.
+distorting the image. Mirrors `examples/028-sizing-and-fit/`.
 
 **6.5** Three figures whose `kind` differs, so each gets its own counter:
 
@@ -357,7 +357,7 @@ See @fig:shape, @tbl:mini, and @dia:flow — each numbered 1.
 A drawn shape takes the default kind (Figure 1), a table figure the `table` kind
 (Table 1), and the last one an explicit `kind: "diagram"` (Diagram 1). The
 insight: `kind` separates the counters, so all three read `1`; `supplement` only
-sets the printed word. Mirrors `examples/029-figure-kinds/`.
+sets the printed word. Mirrors `examples/029-figure-of-a-table-or-diagram/`.
 
 ## Chapter 7 — Tables and grids
 
@@ -1470,7 +1470,7 @@ description = "Small note helpers."
 `lib.typ` exports something like `#let hi(name) = [Hello, #name!]`; `main.typ`
 reads it by relative path with `#import "lib.typ": hi` and calls `#hi("world")`.
 It compiles offline because a relative import never touches the registry — the
-pattern from `examples/106-a-local-package/`.
+pattern from `examples/106-publishing-a-package/`.
 
 **20.5** Turn the Chapter 19 template into a template package. The shape
 (mirrors `examples/107-`):
